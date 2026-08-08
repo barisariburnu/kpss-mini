@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "KPSS Hap Not",
+    "slug": "kpss-hap-not",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.kpsshapnot.app"
+    },
+    "android": {
+      "package": "com.kpsshapnot.app",
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": true
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
