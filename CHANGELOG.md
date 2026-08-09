@@ -31,13 +31,16 @@
 - Reklam yok, resmi kurum degil, finans ozelligi yok ve saglik ozelligi yok
   beyanlari kaydedildi.
 - Hedef kitle 18+, kategori Egitim olarak kaydedildi.
-- Veri Guvenligi formu veri toplama/paylasma yok olarak taslaga alindi.
+- Veri Guvenligi formu veri toplama/paylasma yok olarak kaydedildi.
 - Magaza metinleri, 512x512 simge, 1024x500 ozellik grafigi ve dort telefon
   ekran goruntusu kaydedildi.
 - Simge ve ozellik grafigi yapay zeka ile uretilmis/duzenlenmis olarak dogru
   bicimde etiketlendi.
-- Gizlilik URL'si, herkese acik destek e-postasi ve IARC ankete ait kalan
-  adimlar devir notuna yazildi.
+- GitHub deposu herkese acik hale getirildi; GitHub Pages `main/docs`
+  kaynagindan etkinlestirildi ve gizlilik politikasi
+  `https://barisariburnu.github.io/kpss-mini/` adresinde yayinlandi.
+- Herkese acik gizlilik URL'si Play Console'a kaydedildi; icerik
+  derecelendirmesi dahil 11 ilk kurulum gorevinin 10'u tamamlandi.
 
 ### Dogrulama
 
@@ -60,10 +63,8 @@
   paketleri yayin disidir.
 - Uygulama Expo/EAS hizmetlerini kullanmaz; ancak SQLite, status bar, splash ve
   asset gibi yerel Expo SDK modulleri native build icinde bulunur.
-- Play Console'da destek e-postasi kullanicidan alinmadan herkese acik hale
-  getirilmedi. Ayni e-posta IARC icerik derecelendirme anketi icin gereklidir.
-- GitHub Pages etkinlestirildikten sonra `https://barisariburnu.github.io/kpss-mini/`
-  gizlilik URL'si Play Console'a girilmeli ve Veri Guvenligi taslagi gonderilmeli.
+- Play Console'da herkese acik destek e-postasi kullanicidan alinmadan
+  yayinlanmadi. Ilk kurulumun kalan tek adimi magaza iletisim e-postasidir.
 
 Bu dosya hem urun degisikliklerini hem de agent devir notlarini kronolojik olarak
 kaydeder. En yeni kayit en ustte yer alir.

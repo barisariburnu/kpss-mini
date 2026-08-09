@@ -21,13 +21,13 @@
 - [x] Sağlık özelliği yok beyanı
 - [x] 18 yaş ve üzeri hedef kitle
 - [x] Eğitim kategorisi
-- [x] Veri toplama/paylaşma yok taslağı
+- [x] Veri toplama/paylaşma yok beyanı kaydedildi
 - [x] Mağaza adı, kısa/tam açıklama, simge, özellik grafiği ve dört telefon ekran görüntüsü
 - [x] Simge ve özellik grafiği için yapay zekâ öğe etiketi
-- [ ] Herkese açık gizlilik URL'si Play Console'a eklenmeli
+- [x] Herkese açık gizlilik URL'si Play Console'a eklendi
 - [ ] Herkese açık destek e-postası mağaza iletişimine ve IARC anketine girilmeli
-- [ ] İçerik derecelendirme anketi tamamlanmalı
-- [ ] Veri Güvenliği taslağı gizlilik URL'sinden sonra gönderilmeli
+- [x] İçerik derecelendirme anketi tamamlandı
+- [x] Veri Güvenliği beyanı gizlilik URL'siyle kaydedildi
 - [ ] Yerel AAB Play App Signing akışına yüklenmeli
 - [ ] Dahili/kapalı test ve production erişim şartları tamamlanmalı
 
