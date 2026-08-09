@@ -1,21 +1,23 @@
 {
-  "name": "kpss-hap-not",
-  "version": "0.1.0",
+  "name": "kpss-mini",
+  "version": "1.0.0",
   "private": true,
   "main": "index.ts",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "start": "react-native start",
+    "android": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/build-android-local.ps1",
+    "android:bundle": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/build-android-local.ps1",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run"
   },
   "dependencies": {
     "@expo/metro-runtime": "~57.0.8",
-    "@react-native-async-storage/async-storage": "2.2.0",
+    "@expo/vector-icons": "^15.0.2",
     "expo": "~57.0.0",
+    "expo-asset": "~57.0.9",
+    "expo-splash-screen": "~57.0.5",
+    "expo-sqlite": "~57.0.1",
     "expo-status-bar": "~57.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -25,6 +27,8 @@
     "typescript": "~6.0.3"
   },
   "devDependencies": {
+    "@react-native-community/cli": "^20.2.0",
+    "@react-native/metro-config": "^0.86.2",
     "@types/react": "~19.2.2",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~57.0.1",

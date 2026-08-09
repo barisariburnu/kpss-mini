@@ -3,9 +3,14 @@ node_modules/
 dist/
 web-build/
 coverage/
+.gradle-user-home/
 *.log
 .DS_Store
 *.jks
+*.keystore
+*.keys
+credentials.json
+builds/*.aab
 *.p8
 *.p12
 *.key

@@ -1,39 +1,44 @@
-# KPSS Hap Not
+# KPSS Mini: Bilgi Kartları
 
 KPSS adaylarının kısa boşluklarda aktif hatırlama yapabilmesi için hazırlanmış,
-çevrimdışı çalışan mobil MVP. Uygulama Android ve iOS için Expo + React Native
-ile geliştirilmiştir.
+çevrimdışı çalışan mobil MVP. Uygulama `gearapps` için React Native, yerel Expo
+SDK modülleri ve SQLite ile geliştirilmiştir. Android production paketi Expo/EAS
+bulutu kullanılmadan, doğrudan yerel Gradle ve kullanıcıya ait upload key ile
+üretilir.
 
 ## MVP'de Neler Var?
 
 - Altı ders ve 24 örnek hap bilgi kartı
+- Ders ve konu seçimi
 - Cevabı açmadan önce düşünmeye yönlendiren aktif hatırlama akışı
 - `Öğrendim` ve `Tekrar et` işaretleri
 - Günlük 10 kart hedefi
 - Kaydedilen kartlar
 - Genel ve ders bazlı ilerleme
-- Cihazda kalıcı, hesap gerektirmeyen kullanım
-- Çalışma oturumunun dışında kalan, kapatılabilir sponsor alanı
+- İçerik ve ilerleme için cihazda kalıcı SQLite veritabanı
+- Hesap, kişisel veri toplama ve reklam SDK'sı olmadan kullanım
 
 Hesap, sunucu, bildirim, sosyal özellik, lig, yapay zekâ, ödeme ve kapsamlı
 deneme sınavı motoru bilinçli olarak MVP dışında tutulmuştur.
 
 ## Çalıştırma
 
-Gereksinim: Node.js 22.13 veya üzeri.
+Gereksinimler: Node.js 22.13 veya üzeri, JDK 21 ve Android SDK.
 
 ```bash
 npm install
 npm start
 ```
 
-Expo Go ile QR kodu tarayabilir veya aşağıdaki komutları kullanabilirsiniz:
-
 ```bash
 npm run android
-npm run ios
-npm run web
+npm run android:bundle
 ```
+
+Her iki Android komutu da aynı yerel production AAB akışını çalıştırır. Betik
+`credentials.json` ve uygulamaya özel JKS dosyasını kullanır; sırları çıktıya
+yazmaz, AAB sertifikasını keystore ile karşılaştırır ve sonucu `builds/` altına
+kopyalar. Expo veya EAS hesabına veri gönderilmez.
 
 Windows üzerinde `npm.ps1` çalıştırma ilkesi engeline rastlanırsa komutlar
 `npm.cmd` ile çalıştırılabilir.
@@ -44,7 +49,7 @@ Windows üzerinde `npm.ps1` çalıştırma ilkesi engeline rastlanırsa komutlar
 npm run typecheck
 npm run lint
 npm test
-npx expo install --check
+npm run android:bundle
 ```
 
 ## Ürün Araştırması ve MVP Kararı
@@ -60,17 +65,31 @@ Ağustos 2026 mağaza incelemesinde şu ürün kalıpları görüldü:
 
 Sonuç olarak uygulamanın temel döngüsü şudur:
 
-`Ders seç → soruyu düşün → cevabı aç → öğrendim/tekrar et → ilerlemeyi gör`
+`Ders seç → konu seç → soruyu düşün → cevabı aç → öğrendim/tekrar et → ilerlemeyi gör`
+
+## Veritabanı
+
+Uygulama ekranları JSON veya TypeScript kart listesi okumaz. İlk açılışta
+`kpss-hap-not.db` oluşturulur; dersler ve başlangıç kartları sürümlü SQL
+migrasyonuyla eklenir. Kart, ders, ilerleme, günlük çalışma ve kaydedilenler
+repository üzerinden SQLite sorgularıyla gelir.
+
+- Şema ve ilk içerik: `src/database/migrations.ts`
+- Parametreli sorgular: `src/database/repository.ts`
+- Uygulama veri durumu: `src/hooks/useAppData.ts`
+- 10.000+ içerik planı: `docs/CONTENT_PIPELINE.md`
+- Editoryal PostgreSQL şeması: `docs/content-backend-schema.sql`
 
 ## Reklam Stratejisi
 
-MVP gerçek bir reklam SDK'sı veya takip kodu içermez; arayüzde gelecekteki doğal
-reklam konumunu gösteren bir sponsor bileşeni vardır.
+MVP gerçek bir reklam SDK'sı, takip kodu veya kullanıcıya gösterilen sahte reklam
+alanı içermez.
 
-- Reklam yalnızca ana sayfada, ders listesinden sonra gösterilir.
+- Gerçek entegrasyon yapılırsa yalnızca ana sayfada, ders listesinden sonra doğal
+  banner kullanılacaktır.
 - Açılış, tam ekran, geçiş ve ödüllü reklam kullanılmaz.
 - Çalışma, kaydedilenler ve ilerleme ekranları reklamsızdır.
-- Alan sessiz, sabit, açıkça `Sponsorlu` etiketli ve kapatılabilirdir.
+- Alan sessiz, sabit, açıkça `Sponsorlu` etiketli ve kapatılabilir olmalıdır.
 - Reklam ağı bağlanacağı zaman kullanıcı rızası, mağaza politikaları ve çocuklara
   yönelik içerik gereklilikleri ayrıca uygulanmalıdır.
 
@@ -79,10 +98,11 @@ reklam konumunu gösteren bir sponsor bileşeni vardır.
 ```text
 App.tsx                    Uygulama kabuğu ve basit ekran yönlendirme
 src/components             Ortak görsel bileşenler
-src/data                   Dersler ve çevrimdışı kart içeriği
+src/database               SQLite migrasyonu ve repository
 src/domain                 Saf ilerleme ve çalışma sırası kuralları
-src/hooks                  Yerel kalıcılık
-src/screens                Ana, kaydedilen, ilerleme ve çalışma ekranları
+src/hooks                  Veritabanı destekli uygulama durumu
+src/screens                Ana, konu, kaydedilen, ilerleme ve çalışma ekranları
+docs                       Play Store ve içerik ölçekleme belgeleri
 ```
 
 Detaylı geliştirme kuralları için `AGENTS.md`, kronolojik devir notları için

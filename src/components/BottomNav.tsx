@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { colors, spacing } from '../theme';
 
@@ -9,10 +10,15 @@ type Props = {
   onChange: (tab: TabId) => void;
 };
 
-const tabs: { id: TabId; label: string; glyph: string }[] = [
-  { id: 'home', label: 'Ana Sayfa', glyph: '⌂' },
-  { id: 'saved', label: 'Kaydedilen', glyph: '♡' },
-  { id: 'progress', label: 'İlerleme', glyph: '↗' },
+const tabs: {
+  id: TabId;
+  label: string;
+  icon: keyof typeof Ionicons.glyphMap;
+  activeIcon: keyof typeof Ionicons.glyphMap;
+}[] = [
+  { id: 'home', label: 'Ana Sayfa', icon: 'home-outline', activeIcon: 'home' },
+  { id: 'saved', label: 'Kaydedilen', icon: 'heart-outline', activeIcon: 'heart' },
+  { id: 'progress', label: 'İlerleme', icon: 'stats-chart-outline', activeIcon: 'stats-chart' },
 ];
 
 export function BottomNav({ activeTab, onChange }: Props) {
@@ -29,9 +35,11 @@ export function BottomNav({ activeTab, onChange }: Props) {
             onPress={() => onChange(tab.id)}
             style={({ pressed }) => [styles.item, pressed && styles.pressed]}
           >
-            <Text style={[styles.glyph, active && styles.activeText]}>
-              {tab.glyph}
-            </Text>
+            <Ionicons
+              name={active ? tab.activeIcon : tab.icon}
+              size={21}
+              color={active ? colors.accentDark : colors.inkMuted}
+            />
             <Text style={[styles.label, active && styles.activeText]}>
               {tab.label}
             </Text>
@@ -61,12 +69,6 @@ const styles = StyleSheet.create({
     minHeight: 56,
   },
   pressed: { opacity: 0.6 },
-  glyph: {
-    color: colors.inkMuted,
-    fontSize: 22,
-    lineHeight: 24,
-    fontWeight: '600',
-  },
   label: {
     color: colors.inkMuted,
     fontSize: 11,

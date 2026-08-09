@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { studyCards } from '../data/cards';
+import type { StudyCard } from '../types';
 import {
   buildStudyQueue,
   completeSession,
@@ -13,6 +13,68 @@ import {
 } from './progress';
 
 const today = new Date(2026, 7, 8, 12);
+const studyCards: StudyCard[] = [
+  {
+    id: 'turkce-1',
+    subjectId: 'turkce',
+    topic: 'Dil Bilgisi',
+    prompt: 'Soru 1',
+    answer: 'Cevap 1',
+    detail: 'Detay 1',
+    contentVersion: 1,
+    isVerified: true,
+  },
+  {
+    id: 'turkce-2',
+    subjectId: 'turkce',
+    topic: 'Anlam',
+    prompt: 'Soru 2',
+    answer: 'Cevap 2',
+    detail: 'Detay 2',
+    contentVersion: 1,
+    isVerified: true,
+  },
+  {
+    id: 'matematik-1',
+    subjectId: 'matematik',
+    topic: 'Sayılar',
+    prompt: 'Soru 3',
+    answer: 'Cevap 3',
+    detail: 'Detay 3',
+    contentVersion: 1,
+    isVerified: true,
+  },
+  {
+    id: 'matematik-2',
+    subjectId: 'matematik',
+    topic: 'Problemler',
+    prompt: 'Soru 4',
+    answer: 'Cevap 4',
+    detail: 'Detay 4',
+    contentVersion: 1,
+    isVerified: true,
+  },
+  {
+    id: 'matematik-3',
+    subjectId: 'matematik',
+    topic: 'Oran',
+    prompt: 'Soru 5',
+    answer: 'Cevap 5',
+    detail: 'Detay 5',
+    contentVersion: 1,
+    isVerified: true,
+  },
+  {
+    id: 'matematik-4',
+    subjectId: 'matematik',
+    topic: 'Yüzde',
+    prompt: 'Soru 6',
+    answer: 'Cevap 6',
+    detail: 'Detay 6',
+    contentVersion: 1,
+    isVerified: true,
+  },
+];
 
 describe('progress domain', () => {
   it('uses a local calendar date key', () => {

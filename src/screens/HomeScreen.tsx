@@ -5,23 +5,30 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { ProgressBar } from '../components/ProgressBar';
-import { SponsorSlot } from '../components/SponsorSlot';
 import { SubjectMark } from '../components/SubjectMark';
-import { studyCards } from '../data/cards';
-import { subjects } from '../data/subjects';
 import { DAILY_GOAL, subjectCompletion } from '../domain/progress';
 import { colors, radius, spacing } from '../theme';
-import type { ProgressState, SubjectId } from '../types';
+import type {
+  ProgressState,
+  StudyCard,
+  Subject,
+  SubjectId,
+} from '../types';
 
 type Props = {
+  subjects: Subject[];
+  cards: StudyCard[];
   progress: ProgressState;
   onStartDaily: () => void;
   onStartSubject: (subjectId: SubjectId) => void;
 };
 
 export function HomeScreen({
+  subjects,
+  cards,
   progress,
   onStartDaily,
   onStartSubject,
@@ -37,12 +44,12 @@ export function HomeScreen({
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.header}>
-        <View>
-          <Text style={styles.kicker}>KPSS HAP NOT</Text>
+        <View style={styles.headerCopy}>
+          <Text style={styles.kicker}>KPSS MINI</Text>
           <Text style={styles.title}>Bugün biraz daha yakın.</Text>
         </View>
         <View style={styles.streakBadge} accessibilityLabel="Bugünkü çalışma">
-          <Text style={styles.streakIcon}>●</Text>
+          <Ionicons name="today-outline" size={15} color={colors.amber} />
           <Text style={styles.streakText}>{dailyCount}</Text>
         </View>
       </View>
@@ -84,7 +91,7 @@ export function HomeScreen({
           <Text style={styles.primaryButtonText}>
             {reviewCount > 0 ? 'Tekrara başla' : 'Bugünün kartlarına başla'}
           </Text>
-          <Text style={styles.primaryButtonArrow}>→</Text>
+          <Ionicons name="arrow-forward" size={20} color={colors.white} />
         </Pressable>
       </View>
 
@@ -98,11 +105,11 @@ export function HomeScreen({
       <View style={styles.subjectGrid}>
         {subjects.map((subject) => {
           const completion = subjectCompletion(
-            studyCards,
+            cards,
             progress.learnedIds,
             subject.id,
           );
-          const cardCount = studyCards.filter(
+          const cardCount = cards.filter(
             (card) => card.subjectId === subject.id,
           ).length;
           return (
@@ -118,7 +125,7 @@ export function HomeScreen({
             >
               <View style={styles.subjectCardTop}>
                 <SubjectMark subject={subject} />
-                <Text style={styles.subjectArrow}>↗</Text>
+                <Ionicons name="chevron-forward" size={17} color="#A9B0B4" />
               </View>
               <Text style={styles.subjectName}>{subject.name}</Text>
               <Text style={styles.subjectMeta}>{cardCount} hap bilgi</Text>
@@ -135,10 +142,9 @@ export function HomeScreen({
         })}
       </View>
 
-      <SponsorSlot />
       <Text style={styles.disclaimer}>
-        Bağımsız bir çalışma aracıdır; ÖSYM veya başka bir kamu kurumunu temsil
-        etmez.
+        gearapps tarafından geliştirilen bağımsız bir çalışma aracıdır. ÖSYM’yi
+        veya başka bir kamu kurumunu temsil etmez.
       </Text>
     </ScrollView>
   );
@@ -156,7 +162,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    gap: spacing.sm,
   },
+  headerCopy: { flex: 1, minWidth: 0 },
   kicker: {
     color: colors.accentDark,
     fontSize: 10,
@@ -166,24 +174,23 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.ink,
-    fontSize: 25,
-    lineHeight: 32,
+    fontSize: 23,
+    lineHeight: 29,
     letterSpacing: -0.6,
     fontWeight: '800',
     marginTop: 2,
   },
   streakBadge: {
-    minWidth: 48,
-    height: 42,
+    minWidth: 44,
+    height: 40,
     borderRadius: radius.pill,
     backgroundColor: colors.amberSoft,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 6,
-    paddingHorizontal: spacing.md,
+    paddingHorizontal: spacing.sm,
   },
-  streakIcon: { color: colors.amber, fontSize: 12 },
   streakText: { color: colors.ink, fontWeight: '800', fontSize: 14 },
   hero: {
     backgroundColor: colors.ink,
@@ -237,7 +244,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
   },
   primaryButtonText: { color: colors.white, fontSize: 14, fontWeight: '800' },
-  primaryButtonArrow: { color: colors.white, fontSize: 22, lineHeight: 24 },
   buttonPressed: { backgroundColor: colors.accentDark },
   sectionHeader: { marginTop: spacing.xs },
   sectionTitle: { color: colors.ink, fontSize: 20, fontWeight: '800' },
@@ -255,6 +261,7 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: colors.line,
+    minHeight: 185,
   },
   cardPressed: { opacity: 0.72, transform: [{ scale: 0.99 }] },
   subjectCardTop: {
@@ -262,7 +269,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
   },
-  subjectArrow: { color: '#A9B0B4', fontSize: 18 },
   subjectName: {
     color: colors.ink,
     fontSize: 15,

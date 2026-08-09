@@ -1,4 +1,4 @@
-# KPSS Hap Not - Agent Rehberi
+# KPSS Mini - Agent Rehberi
 
 ## Proje Amaci
 
@@ -35,4 +35,3 @@ motoru.
 3. Mobil gorunum ve temel akislar dogrulandi.
 4. Reklam yerlestirmesi ana gorevi kesmiyor.
 5. `CHANGELOG.md` guncel ve sonraki agent icin acik not iceriyor.
-

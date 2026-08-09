@@ -1,22 +1,52 @@
 {
   "expo": {
-    "name": "KPSS Hap Not",
-    "slug": "kpss-hap-not",
-    "version": "0.1.0",
+    "name": "KPSS Mini: Bilgi Kartları",
+    "slug": "kpss-mini",
+    "version": "1.0.0",
+    "description": "KPSS bilgi kartlarıyla çevrimdışı hızlı tekrar ve ilerleme takibi.",
+    "scheme": "kpssmini",
+    "icon": "./assets/app-icon.png",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "primaryColor": "#172B3A",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.kpsshapnot.app"
+      "bundleIdentifier": "com.gearapps.kpsshapnot",
+      "buildNumber": "1",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
-      "package": "com.kpsshapnot.app",
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": true
+      "package": "com.gearapps.kpsshapnot",
+      "versionCode": 4,
+      "predictiveBackGestureEnabled": true,
+      "allowBackup": false,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/app-icon.png",
+        "backgroundColor": "#172B3A"
+      }
     },
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "favicon": "./assets/app-icon.png"
+    },
+    "plugins": [
+      "expo-sqlite",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/app-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#F7F5EF"
+        }
+      ]
+    ],
+    "extra": {
+      "developerName": "gearapps",
+      "contentDatabase": "kpss-hap-not.db"
     }
   }
 }

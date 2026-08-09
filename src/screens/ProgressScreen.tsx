@@ -2,16 +2,18 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { ProgressBar } from '../components/ProgressBar';
 import { SubjectMark } from '../components/SubjectMark';
-import { studyCards } from '../data/cards';
-import { subjects } from '../data/subjects';
 import { DAILY_GOAL, subjectCompletion } from '../domain/progress';
 import { colors, radius, spacing } from '../theme';
-import type { ProgressState } from '../types';
+import type { ProgressState, StudyCard, Subject } from '../types';
 
-type Props = { progress: ProgressState };
+type Props = {
+  cards: StudyCard[];
+  subjects: Subject[];
+  progress: ProgressState;
+};
 
-export function ProgressScreen({ progress }: Props) {
-  const total = studyCards.length;
+export function ProgressScreen({ cards, subjects, progress }: Props) {
+  const total = cards.length;
   const learned = progress.learnedIds.length;
   const overall = total === 0 ? 0 : Math.round((learned / total) * 100);
   const daily = Math.min(progress.daily.studiedIds.length, DAILY_GOAL);
@@ -71,16 +73,16 @@ export function ProgressScreen({ progress }: Props) {
         <View style={styles.subjectList}>
           {subjects.map((subject) => {
             const completion = subjectCompletion(
-              studyCards,
+              cards,
               progress.learnedIds,
               subject.id,
             );
-            const learnedCount = studyCards.filter(
+            const learnedCount = cards.filter(
               (card) =>
                 card.subjectId === subject.id &&
                 progress.learnedIds.includes(card.id),
             ).length;
-            const subjectTotal = studyCards.filter(
+            const subjectTotal = cards.filter(
               (card) => card.subjectId === subject.id,
             ).length;
             return (

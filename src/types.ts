@@ -23,6 +23,10 @@ export type StudyCard = {
   answer: string;
   detail: string;
   memoryTip?: string;
+  sourceName?: string;
+  sourceUrl?: string;
+  contentVersion: number;
+  isVerified: boolean;
 };
 
 export type DailyProgress = {

@@ -6,15 +6,17 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { ProgressBar } from '../components/ProgressBar';
-import { subjectById } from '../data/subjects';
 import { colors, radius, spacing } from '../theme';
-import type { Rating, StudyCard } from '../types';
+import type { Rating, StudyCard, Subject } from '../types';
 
 type Props = {
   cards: StudyCard[];
+  subjects: Subject[];
   title: string;
+  doneLabel?: string;
   savedIds: string[];
   onClose: () => void;
   onRate: (cardId: string, rating: Rating) => void;
@@ -24,7 +26,9 @@ type Props = {
 
 export function StudyScreen({
   cards,
+  subjects,
   title,
+  doneLabel = 'Ana sayfaya dön',
   savedIds,
   onClose,
   onRate,
@@ -57,7 +61,7 @@ export function StudyScreen({
     return (
       <View style={styles.completeScreen}>
         <View style={styles.completeMark}>
-          <Text style={styles.completeGlyph}>✓</Text>
+          <Ionicons name="checkmark" size={44} color={colors.teal} />
         </View>
         <Text style={styles.completeEyebrow}>TEKRAR TAMAMLANDI</Text>
         <Text style={styles.completeTitle}>Bugünlük bir adım daha.</Text>
@@ -86,13 +90,14 @@ export function StudyScreen({
             pressed && styles.buttonPressed,
           ]}
         >
-          <Text style={styles.doneButtonText}>Ana sayfaya dön</Text>
+          <Text style={styles.doneButtonText}>{doneLabel}</Text>
         </Pressable>
       </View>
     );
   }
 
-  const subject = subjectById[current.subjectId];
+  const subject = subjects.find((item) => item.id === current.subjectId);
+  if (!subject) return null;
   const progress = ((index + (revealed ? 0.5 : 0)) / cards.length) * 100;
   const isSaved = savedIds.includes(current.id);
 
@@ -109,7 +114,7 @@ export function StudyScreen({
             pressed && styles.headerPressed,
           ]}
         >
-          <Text style={styles.closeGlyph}>×</Text>
+          <Ionicons name="close" size={27} color={colors.ink} />
         </Pressable>
         <View style={styles.headerCopy}>
           <Text style={styles.headerTitle} numberOfLines={1}>
@@ -130,9 +135,11 @@ export function StudyScreen({
             pressed && styles.headerPressed,
           ]}
         >
-          <Text style={[styles.heartGlyph, isSaved && styles.heartSaved]}>
-            {isSaved ? '♥' : '♡'}
-          </Text>
+          <Ionicons
+            name={isSaved ? 'heart' : 'heart-outline'}
+            size={24}
+            color={isSaved ? colors.accent : colors.inkMuted}
+          />
         </Pressable>
       </View>
 
@@ -168,7 +175,7 @@ export function StudyScreen({
               <Text style={styles.detail}>{current.detail}</Text>
               {current.memoryTip ? (
                 <View style={styles.tipBox}>
-                  <Text style={styles.tipIcon}>✦</Text>
+                  <Ionicons name="sparkles" size={18} color={colors.amber} />
                   <View style={styles.tipCopy}>
                     <Text style={styles.tipLabel}>AKILDA KALSIN</Text>
                     <Text style={styles.tipText}>{current.memoryTip}</Text>
@@ -197,7 +204,7 @@ export function StudyScreen({
                 pressed && styles.lightPressed,
               ]}
             >
-              <Text style={styles.reviewButtonIcon}>↺</Text>
+              <Ionicons name="refresh" size={21} color={colors.amber} />
               <View>
                 <Text style={styles.reviewButtonText}>Tekrar et</Text>
                 <Text style={styles.buttonHint}>Listeye ekle</Text>
@@ -211,7 +218,7 @@ export function StudyScreen({
                 pressed && styles.buttonPressed,
               ]}
             >
-              <Text style={styles.learnedButtonIcon}>✓</Text>
+              <Ionicons name="checkmark" size={21} color={colors.white} />
               <View>
                 <Text style={styles.learnedButtonText}>Öğrendim</Text>
                 <Text style={styles.learnedButtonHint}>Sıradaki kart</Text>
@@ -228,7 +235,7 @@ export function StudyScreen({
             ]}
           >
             <Text style={styles.revealButtonText}>Cevabı göster</Text>
-            <Text style={styles.revealArrow}>↓</Text>
+            <Ionicons name="chevron-down" size={19} color={colors.accent} />
           </Pressable>
         )}
       </View>
@@ -252,9 +259,6 @@ const styles = StyleSheet.create({
     borderRadius: 22,
   },
   headerPressed: { backgroundColor: colors.muted },
-  closeGlyph: { color: colors.ink, fontSize: 29, lineHeight: 31, fontWeight: '300' },
-  heartGlyph: { color: colors.inkMuted, fontSize: 25 },
-  heartSaved: { color: colors.accent },
   headerCopy: { flex: 1, alignItems: 'center' },
   headerTitle: { color: colors.ink, fontSize: 14, fontWeight: '800' },
   counter: { color: colors.inkMuted, fontSize: 10, marginTop: 2 },
@@ -328,7 +332,6 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     marginTop: spacing.xl,
   },
-  tipIcon: { color: colors.amber, fontSize: 18 },
   tipCopy: { flex: 1 },
   tipLabel: {
     color: '#926415',
@@ -364,7 +367,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
   },
   revealButtonText: { color: colors.white, fontSize: 15, fontWeight: '800' },
-  revealArrow: { color: colors.accent, fontSize: 20 },
   ratingRow: { flexDirection: 'row', gap: spacing.md },
   reviewButton: {
     flex: 1,
@@ -378,7 +380,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: spacing.sm,
   },
-  reviewButtonIcon: { color: colors.amber, fontSize: 22, fontWeight: '700' },
   reviewButtonText: { color: colors.ink, fontSize: 13, fontWeight: '800' },
   buttonHint: { color: colors.inkMuted, fontSize: 9, marginTop: 2 },
   learnedButton: {
@@ -391,7 +392,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: spacing.sm,
   },
-  learnedButtonIcon: { color: colors.white, fontSize: 20, fontWeight: '800' },
   learnedButtonText: { color: colors.white, fontSize: 13, fontWeight: '800' },
   learnedButtonHint: { color: '#CBE2DD', fontSize: 9, marginTop: 2 },
   buttonPressed: { opacity: 0.82 },
@@ -411,7 +411,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  completeGlyph: { color: colors.teal, fontSize: 39, fontWeight: '700' },
   completeEyebrow: {
     color: colors.teal,
     fontSize: 10,

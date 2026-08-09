@@ -5,25 +5,28 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { SubjectMark } from '../components/SubjectMark';
-import { studyCards } from '../data/cards';
-import { subjectById } from '../data/subjects';
 import { colors, radius, spacing } from '../theme';
-import type { ProgressState, StudyCard } from '../types';
+import type { ProgressState, StudyCard, Subject } from '../types';
 
 type Props = {
+  cards: StudyCard[];
+  subjects: Subject[];
   progress: ProgressState;
   onStartCards: (cards: StudyCard[], title: string) => void;
   onToggleSaved: (cardId: string) => void;
 };
 
 export function SavedScreen({
+  cards,
+  subjects,
   progress,
   onStartCards,
   onToggleSaved,
 }: Props) {
-  const savedCards = studyCards.filter((card) =>
+  const savedCards = cards.filter((card) =>
     progress.savedIds.includes(card.id),
   );
 
@@ -57,12 +60,13 @@ export function SavedScreen({
                 {savedCards.length} kartı çalış
               </Text>
             </View>
-            <Text style={styles.studyButtonArrow}>→</Text>
+            <Ionicons name="arrow-forward" size={24} color={colors.accent} />
           </Pressable>
 
           <View style={styles.list}>
             {savedCards.map((card) => {
-              const subject = subjectById[card.subjectId];
+              const subject = subjects.find((item) => item.id === card.subjectId);
+              if (!subject) return null;
               return (
                 <View key={card.id} style={styles.card}>
                   <Pressable
@@ -91,7 +95,7 @@ export function SavedScreen({
                     onPress={() => onToggleSaved(card.id)}
                     style={styles.removeButton}
                   >
-                    <Text style={styles.removeIcon}>♥</Text>
+                    <Ionicons name="heart" size={19} color={colors.accent} />
                   </Pressable>
                 </View>
               );
@@ -101,7 +105,7 @@ export function SavedScreen({
       ) : (
         <View style={styles.empty}>
           <View style={styles.emptyIcon}>
-            <Text style={styles.emptyGlyph}>♡</Text>
+            <Ionicons name="heart-outline" size={34} color={colors.accentDark} />
           </View>
           <Text style={styles.emptyTitle}>Henüz kart kaydetmedin</Text>
           <Text style={styles.emptyBody}>
@@ -162,7 +166,6 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginTop: 4,
   },
-  studyButtonArrow: { color: colors.accent, fontSize: 26 },
   pressed: { opacity: 0.8 },
   list: { gap: spacing.md },
   card: {
@@ -192,7 +195,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  removeIcon: { color: colors.accent, fontSize: 18 },
   empty: {
     minHeight: 350,
     alignItems: 'center',
@@ -207,7 +209,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.accentSoft,
   },
-  emptyGlyph: { color: colors.accentDark, fontSize: 34 },
   emptyTitle: {
     color: colors.ink,
     fontSize: 18,
