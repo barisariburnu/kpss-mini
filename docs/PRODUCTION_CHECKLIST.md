@@ -3,7 +3,7 @@
 ## Kod ve yerel paket
 
 - [x] Android paket kimliği `com.gearapps.kpsshapnot`
-- [x] Sürüm `1.0.0`, Android `versionCode` 4
+- [x] Sürüm `1.0.0`, Android `versionCode` 5
 - [x] Android target API 36
 - [x] SQLite içerik ve ilerleme veritabanı
 - [x] Android otomatik yedekleme kapalı
@@ -11,6 +11,7 @@
 - [x] EAS bağlantısı ve `eas.json` kaldırıldı
 - [x] JDK 21 + yerel Gradle ile production AAB üretimi
 - [x] Yerel upload key ile AAB sertifika eşleşmesi doğrulandı
+- [x] Release R8 küçültmesi, kaynak küçültmesi ve Play kod eşleme çıktısı
 
 ## Play Console
 
@@ -28,14 +29,19 @@
 - [x] `destek@barisariburnu.com.tr` mağaza iletişimine girildi
 - [x] İçerik derecelendirme anketi tamamlandı
 - [x] Veri Güvenliği beyanı gizlilik URL'siyle kaydedildi
-- [ ] Yerel AAB Play App Signing akışına yüklenmeli
+- [x] Android reklam kimliği kullanılmıyor beyanı kaydedildi
+- [x] Yerel AAB Play App Signing akışına yüklendi
 - [x] Play App Signing ve otomatik koruma etkin
 - [x] Dahili test sürüm adı ve Türkçe sürüm notları hazır
-- [ ] Dahili/kapalı test ve production erişim şartları tamamlanmalı
+- [x] Dahili test `1.0.0 (5)` iki tester için etkin ve kullanılabilir
+- [x] Dahili test sürüm doğrulaması hata ve uyarı olmadan geçti
+- [x] Production dağıtım ülkesi Türkiye olarak ayarlandı
+- [x] `1.0.0 (5) - Production` ve bekleyen mağaza değişiklikleri incelemeye gönderildi
+- [ ] Google Play production incelemesi tamamlanmalı
 
 ## Yerel imzalama
 
-- [x] `*.keys`, `*.jks`, `credentials.json` ve `builds/*.aab` Git dışında
+- [x] `*.keys`, `*.jks`, `credentials.json`, `builds/*.aab` ve R8 eşleme dosyaları Git dışında
 - [x] Uygulamaya özel `kpss-mini-upload.jks` ve yerel `credentials.json`
 - [x] Parolaları ekrana yazdırmayan yerel build betiği
 - [x] Windows Unicode/yol sınırı için kısa ASCII geçici build dizini
@@ -45,11 +51,13 @@
 > `builds/kpss-mini-1.0.0-2.aab` ve `builds/kpss-mini-1.0.0-4.aab` eski EAS
 > çıktılarıdır; Play'e yüklenmemelidir.
 
-## Play'e yüklenecek production paketi
+## Play'e yüklenen production adayı
 
-- Dosya: `builds/kpss-mini-1.0.0-4-local.aab`
-- Android versionCode: `4`
-- SHA-256: `6809CB6118FB624AC13B641E5FF085333B9F85838828DEF908C291FF0A233A52`
+- Dosya: `builds/kpss-mini-1.0.0-5-local.aab`
+- Android versionCode: `5`
+- SHA-256: `F943B56E33DB18B1744684881A67DB398B459613A3E9047761BF35ED7FFC9598`
+- R8 eşleme dosyası: `builds/kpss-mini-1.0.0-5-mapping.txt`
+- R8 eşleme SHA-256: `D8DB9025A68F8BD14AA8AA73B69BD3B8590073515224FD58CCE1B1A409153C25`
 - İmza sertifikası: `kpss-mini-upload.jks` sertifikasıyla eşleşiyor
 
 ## Release komutları

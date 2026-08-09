@@ -36,6 +36,7 @@ $versionName = $appConfig.expo.version
 $versionCode = [int]$appConfig.expo.android.versionCode
 $destinationDir = Join-Path $projectRoot 'builds'
 $destination = Join-Path $destinationDir "kpss-mini-$versionName-$versionCode-local.aab"
+$mappingDestination = Join-Path $destinationDir "kpss-mini-$versionName-$versionCode-mapping.txt"
 
 New-Item -ItemType Directory -Path $destinationDir -Force | Out-Null
 New-Item -ItemType Directory -Path $gradleHome -Force | Out-Null
@@ -71,6 +72,7 @@ try {
 
   $androidRoot = Join-Path $buildRoot 'android'
   $gradleOutput = Join-Path $androidRoot 'app\build\outputs\bundle\release\app-release.aab'
+  $mappingOutput = Join-Path $androidRoot 'app\build\outputs\mapping\release\mapping.txt'
 
   $env:JAVA_HOME = $javaHome
   $env:ANDROID_HOME = $androidSdk
@@ -90,8 +92,12 @@ try {
   if (-not (Test-Path -LiteralPath $gradleOutput -PathType Leaf)) {
     throw 'Gradle tamamlandi ancak release AAB bulunamadi.'
   }
+  if (-not (Test-Path -LiteralPath $mappingOutput -PathType Leaf)) {
+    throw 'R8 tamamlandi ancak Play kod gosterme dosyasi bulunamadi.'
+  }
 
   Copy-Item -LiteralPath $gradleOutput -Destination $destination -Force
+  Copy-Item -LiteralPath $mappingOutput -Destination $mappingDestination -Force
 
   $keytool = Join-Path $javaHome 'bin\keytool.exe'
   $env:KPSS_KEYSTORE_PASSWORD = [string]$keystore.keystorePassword
@@ -108,6 +114,7 @@ try {
 
   $hash = (Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash
   Write-Host "Yerel production AAB hazir: $destination"
+  Write-Host "Play kod gosterme dosyasi hazir: $mappingDestination"
   Write-Host "SHA-256: $hash"
   Write-Host 'Imza sertifikasi yerel keystore ile eslesiyor.'
 } finally {

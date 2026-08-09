@@ -1,5 +1,64 @@
 # Degisiklik Gunlugu
 
+## [1.0.0-internal-test] - 2026-08-09
+
+### Degistirildi
+
+- Android `versionCode` 5'e yukseltildi.
+- Release yapilarinda R8 kod kucultme ve Android kaynak kucultme etkinlestirildi.
+- Yerel Android build betigi, AAB ile birlikte gercek R8 `mapping.txt` dosyasini
+  uretip `builds/` altina kopyalayacak ve dosya yoksa build'i durduracak sekilde
+  guncellendi.
+- R8 esleme dosyalari gizli build artefakti olarak Git disinda birakildi.
+
+### Play Console
+
+- Android 13+ Reklam Kimligi beyaninda, uygulamada reklam/analitik/izleme SDK'si
+  ve `AD_ID` izni bulunmadigi icin "Hayir" secenegi kaydedildi.
+- Dahili test taslagindaki paket eksikliginden kaynaklanan uc yayin hatasi,
+  yerelde imzalanmis AAB eklenerek giderildi.
+- Eski `versionCode` 4 paketi taslaktan cikarildi; yerel `versionCode` 5 AAB
+  paketi yuklendi.
+- Play, R8 kod esleme verisini yeni App Bundle icinden algiladi; kod gosterme
+  dosyasi uyarisi giderildi.
+- `1.0.0 (5) - Dahili Test` surumu Turkce notlarla hata ve uyari olmadan
+  dogrulandi ve dahili test kanalinda yayinlandi.
+- `Test Kullanicilari` listesinin secili, iki tester'in yetkili ve dahili test
+  katilim baglantisinin etkin oldugu dogrulandi.
+- Dahili testteki dogrulanmis `versionCode` 5 paketi `1.0.0 (5) - Production`
+  adiyla production kanalina yukseltildi.
+- Ilk production dagitim alani, Turkce ve KPSS odakli MVP icin Turkiye olarak
+  ayarlandi.
+- Production surumu, magazaya kayit bilgileri ve icerik beyanlari dahil dokuz
+  bekleyen degisiklik Google Play incelemesine gonderildi; Yayin Ozeti durumu
+  "Incelenmekte olan degisiklikler" olarak dogrulandi.
+
+### Dogrulama
+
+- Yerel Gradle `bundleRelease`: Basarili (276 gorev); R8
+  `minifyReleaseWithR8` calisti.
+- Yerel AAB: `builds/kpss-mini-1.0.0-5-local.aab`, 30.345.390 bayt.
+- AAB SHA-256:
+  `F943B56E33DB18B1744684881A67DB398B459613A3E9047761BF35ED7FFC9598`.
+- R8 esleme SHA-256:
+  `D8DB9025A68F8BD14AA8AA73B69BD3B8590073515224FD58CCE1B1A409153C25`.
+- AAB sertifika parmak izi yerel `kpss-mini-upload.jks` sertifikasi ile
+  eslesiyor.
+- `npm run typecheck`: Basarili.
+- `npm run lint`: Basarili.
+- `npm test`: 2 test dosyasinda 9/9 test basarili.
+- Play dogrulama sonucu: "Yayinlamaya hazir"; 0 hata, 0 uyari.
+- Play tahmini yeni yukleme boyutu 13,1 MB ve indirme suresi 7 saniye.
+
+### Agent Devir Notu
+
+- Dahili test `1.0.0 (5)` 9 Agustos 2026 22:32 itibariyla kullanima sunuldu.
+- Tester katilim adresi Play Console dahili test kanalindaki "Test
+  kullanicilari" sekmesinde bulunur; tester e-postalari gunluge yazilmadi.
+- Production erisimi bu hesapta kapali test engeli olmadan acildi. Surum Google
+  Play incelemesindedir; sonraki adim inceleme sonucunu izlemek ve varsa Google
+  geri bildirimini ele almaktir.
+
 ## [1.0.0-local-release] - 2026-08-09
 
 ### Eklendi

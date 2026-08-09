@@ -14,6 +14,7 @@ android/app/build/
 *.keys
 credentials.json
 builds/*.aab
+builds/*-mapping.txt
 *.p8
 *.p12
 *.key
