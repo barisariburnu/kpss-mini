@@ -4,6 +4,9 @@ dist/
 web-build/
 coverage/
 .gradle-user-home/
+android/.gradle/
+android/build/
+android/app/build/
 *.log
 .DS_Store
 *.jks
