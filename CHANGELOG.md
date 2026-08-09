@@ -41,6 +41,10 @@
   `https://barisariburnu.github.io/kpss-mini/` adresinde yayinlandi.
 - Herkese acik gizlilik URL'si Play Console'a kaydedildi; icerik
   derecelendirmesi dahil 11 ilk kurulum gorevinin 10'u tamamlandi.
+- Play App Signing ve otomatik korumanin etkin oldugu dogrulandi; dahili test
+  kanali icin `1.0.0 (4) - Dahili Test` taslagi ve Turkce surum notlari
+  hazirlandi. Yerel AAB yuklemesi sistem dosya secicisinde kullanici secimini
+  bekliyor.
 
 ### Dogrulama
 

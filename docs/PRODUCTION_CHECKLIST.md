@@ -25,10 +25,12 @@
 - [x] Mağaza adı, kısa/tam açıklama, simge, özellik grafiği ve dört telefon ekran görüntüsü
 - [x] Simge ve özellik grafiği için yapay zekâ öğe etiketi
 - [x] Herkese açık gizlilik URL'si Play Console'a eklendi
-- [ ] Herkese açık destek e-postası mağaza iletişimine ve IARC anketine girilmeli
+- [ ] Herkese açık destek e-postası mağaza iletişimine girilmeli
 - [x] İçerik derecelendirme anketi tamamlandı
 - [x] Veri Güvenliği beyanı gizlilik URL'siyle kaydedildi
 - [ ] Yerel AAB Play App Signing akışına yüklenmeli
+- [x] Play App Signing ve otomatik koruma etkin
+- [x] Dahili test sürüm adı ve Türkçe sürüm notları hazır
 - [ ] Dahili/kapalı test ve production erişim şartları tamamlanmalı
 
 ## Yerel imzalama
