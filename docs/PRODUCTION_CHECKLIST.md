@@ -25,7 +25,7 @@
 - [x] Mağaza adı, kısa/tam açıklama, simge, özellik grafiği ve dört telefon ekran görüntüsü
 - [x] Simge ve özellik grafiği için yapay zekâ öğe etiketi
 - [x] Herkese açık gizlilik URL'si Play Console'a eklendi
-- [ ] Herkese açık destek e-postası mağaza iletişimine girilmeli
+- [x] `destek@barisariburnu.com.tr` mağaza iletişimine girildi
 - [x] İçerik derecelendirme anketi tamamlandı
 - [x] Veri Güvenliği beyanı gizlilik URL'siyle kaydedildi
 - [ ] Yerel AAB Play App Signing akışına yüklenmeli

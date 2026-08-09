@@ -45,6 +45,8 @@
   kanali icin `1.0.0 (4) - Dahili Test` taslagi ve Turkce surum notlari
   hazirlandi. Yerel AAB yuklemesi sistem dosya secicisinde kullanici secimini
   bekliyor.
+- `destek@barisariburnu.com.tr` herkese acik magaza iletisim e-postasi olarak
+  kaydedildi ve Play Console ilk kurulum gorevlerinin tamami tamamlandi.
 
 ### Dogrulama
 
@@ -67,8 +69,8 @@
   paketleri yayin disidir.
 - Uygulama Expo/EAS hizmetlerini kullanmaz; ancak SQLite, status bar, splash ve
   asset gibi yerel Expo SDK modulleri native build icinde bulunur.
-- Play Console'da herkese acik destek e-postasi kullanicidan alinmadan
-  yayinlanmadi. Ilk kurulumun kalan tek adimi magaza iletisim e-postasidir.
+- Play Console ilk kurulumu tamamlandi. Dahili test taslaginda yerel AAB dosya
+  secimi, test kullanicilari ve surumu kullanima sunma adimlari bekliyor.
 
 Bu dosya hem urun degisikliklerini hem de agent devir notlarini kronolojik olarak
 kaydeder. En yeni kayit en ustte yer alir.
