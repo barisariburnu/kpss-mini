@@ -1,5 +1,52 @@
 # Degisiklik Gunlugu
 
+## [1.0.0-v7-production-submission] - 2026-08-11
+
+### Play Console
+
+- Yerel imzalı `builds/kpss-mini-1.0.0-7-local.aab` production kanalına
+  `1.0.0 (7) - Production` adıyla yüklendi; önceki v6 paketi yeni sürüme dahil
+  edilmedi.
+- Sürüm notları ana ekran/alt navigasyon düzeltmeleri, resmî kaynak bağlantıları,
+  seyrek reklamlar, gizlilik tercihleri ve kararlılık iyileştirmeleriyle
+  güncellendi.
+- Tam mağaza açıklamasındaki reklamsız v6 ifadesi kaldırıldı; ana sayfa banner'ı
+  ile yalnızca tamamlanan oturumdan çıkışta, en erken her üç oturumda bir ve en
+  az 12 saat arayla gösterilebilen geçiş reklamı açıklandı.
+- Reklam beyanı `Reklam içerir`, Reklam Kimliği beyanı `Evet` olarak kaydedildi.
+  Reklam kimliği amaçları analiz, reklam/pazarlama ve sahtekârlığı önleme olarak
+  işaretlendi.
+- Veri Güvenliği formunda Google Mobile Ads için yaklaşık konum, uygulama
+  işlemleri, teşhisler ve cihaz/diğer kimlikler hem toplanan hem paylaşılan veri
+  olarak beyan edildi. Aktarım sırasında şifreleme, hesap bulunmaması ve reklam,
+  analiz ile sahtekârlığı önleme amaçları kaydedildi.
+- Eski v6 inceleme paketi geri çekildi; v7, Türkiye production kapsamı, mağaza
+  kaydı ve tüm politika/mağaza ayarları tek gönderimde birleştirildi.
+- Toplam 10 değişiklik incelemeye yeniden gönderildi. Yayın özeti v7'yi
+  `İncelenmekte olan değişiklikler` altında gösteriyor; Play'in hızlı otomatik
+  kontrolleri arka planda sürüyor.
+
+### Dogrulama
+
+- Play tarafından işlenen paket: versionCode `7`, versionName `1.0.0`, minSdk
+  `24`, targetSdk `36`.
+- AAB boyutu: `34.290.877` bayt.
+- AAB SHA-256:
+  `7344E6D9321771CD8E8AC9D9F3FCBC178B033BF6942CBDAAADDC6AB3DD6552D5`.
+- Bu işlemde kod veya AAB değiştirilmedi; mevcut doğrulanmış yerel build
+  kullanıldı. Expo/EAS bulut derleme, imzalama veya yükleme hizmeti kullanılmadı.
+- Dahili test kanalı duraklatılmış olarak bırakıldı; production erişimi için yeni
+  test sürümü oluşturulmadı.
+
+### Agent Devir Notu
+
+- Play hızlı kontrollerinin ve normal incelemenin sonucunu takip et. Yeni bir
+  ret/uyarı oluşursa Politika Durumu ve Gönderim etkinliğindeki kesin gerekçeyi
+  esas al.
+- `https://barisariburnu.github.io/app-ads.txt` kök adresi hâlâ bekleyen AdMob
+  doğrulama işidir; bu durum Play inceleme gönderimini engellemez ancak reklam
+  sunumunu sınırlayabilir.
+
 ## [1.0.0-play-resubmission] - 2026-08-11
 
 ### Play Console

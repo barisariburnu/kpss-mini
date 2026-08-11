@@ -86,13 +86,14 @@ zamanında yerel Expo SDK modüllerini kullanmaya devam eder.
 - [x] `docs/app-ads.txt` yayıncı kaydı eklendi
 - [x] Proje Pages adresinde `/kpss-mini/app-ads.txt` içeriği HTTP 200 ile doğrulandı
 - [x] Play mağaza iletişim sitesi `https://barisariburnu.github.io/kpss-mini/` olarak yayınlandı
-- [x] Ayrıntılı ve ASO odaklı tam açıklama Play Console'a taslak olarak kaydedildi
-- [ ] İncelemedeki reklamsız `versionCode` 6 production'da yayınlanmalı
+- [x] Ayrıntılı ve ASO odaklı tam açıklama v7 reklam davranışıyla Play Console'a kaydedildi
+- [x] Eski reklamsız `versionCode` 6 incelemesi geri çekildi
 - [ ] Yayındaki Play mağaza kaydı AdMob uygulamasına bağlanmalı
 - [ ] `https://barisariburnu.github.io/app-ads.txt` kök URL'si dosyayı sunmalı veya çalışan dosyaya yönlendirmeli
 - [ ] `app-ads.txt` AdMob tarafından doğrulanmalı ve uygulama hazırlık incelemesi tamamlanmalı
-- [ ] Play Console reklam beyanı, Reklam Kimliği ve Veri Güvenliği alanları v7 ile uyumlu güncellenmeli
-- [ ] Yerel imzalı `versionCode` 7 AAB yalnızca yukarıdaki beyanlarla birlikte Play'e yüklenmeli
+- [x] Play Console reklam beyanı, Reklam Kimliği ve Veri Güvenliği alanları v7 ile uyumlu güncellendi
+- [x] Yerel imzalı `versionCode` 7 AAB production kanalına yüklendi
+- [x] v7 ve ilişkili 10 değişiklik tek paket olarak incelemeye yeniden gönderildi
 
 Yerel staging doğrulaması:
 
@@ -104,10 +105,9 @@ Yerel staging doğrulaması:
 - İmza sertifikası: yerel `kpss-mini-upload.jks` sertifikasıyla eşleşiyor
 - AAB manifesti: production AdMob App ID, gecikmeli ölçüm, `AD_ID` ve internet izni doğrulandı
 
-> İncelemedeki v6 paketi reklam SDK'sı içermediği için mevcut “reklam yok”,
-> “Reklam Kimliği kullanılmıyor” ve veri toplanmıyor beyanları bugün doğrudur.
-> Bu beyanlar v7 yüklenmeden önce değiştirilirse paket ile mağaza beyanı
-> çelişeceğinden mevcut incelemeye dokunulmamıştır.
+> Production incelemesindeki paket artık AdMob'lu v7'dir. Play beyanları `Reklam
+> içerir`, Reklam Kimliği kullanılır ve Google Mobile Ads veri toplama/paylaşma
+> davranışlarıyla uyumlu olarak güncellenmiştir.
 
 > AdMob, geliştirici web sitesi URL'sindeki `/kpss-mini/` yolunu kullanmaz;
 > yalnızca hostname kökündeki `/app-ads.txt` adresini tarar. Bu nedenle mevcut

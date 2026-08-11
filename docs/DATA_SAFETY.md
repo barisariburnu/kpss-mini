@@ -1,15 +1,9 @@
 # Google Play Data Safety Taslağı
 
-## Play'de incelemedeki versionCode 6
+## Play'de incelemedeki versionCode 7
 
-Bu paket reklam SDK'sı içermez; mevcut “veri toplanmıyor/paylaşılmıyor” ve
-“Reklam Kimliği kullanılmıyor” beyanları v6 için geçerlidir.
-
-## AdMob'lu versionCode 7 adayı
-
-Bu taslak yeni AAB yüklenmeden önce Play Console'a işlenmelidir.
-Play Console beyanı gönderilmeden önce üretilen AAB içindeki tüm SDK'lar yeniden
-kontrol edilmelidir.
+AdMob'lu v7 paketi 11 Ağustos 2026'da production kanalına yüklenmiş ve bu
+belgedeki yanıtlarla birlikte incelemeye gönderilmiştir.
 
 | Soru | Mevcut sürüm yanıtı |
 | --- | --- |
@@ -24,7 +18,8 @@ kontrol edilmelidir.
 Yerel çalışma ilerlemesi cihazdaki `kpss-hap-not.db` SQLite veritabanında tutulur.
 Android otomatik yedekleme kapalıdır.
 
-Play formunda yaklaşık konum, uygulama etkileşimleri, teşhis verileri ve cihaz/
-diğer tanımlayıcılar Google Mobile Ads SDK'nın güncel veri açıklamasına göre
-işaretlenmelidir. Amaç ve “toplanıyor/paylaşılıyor” seçimleri yüklenen SDK sürümü
-ve AdMob yapılandırmasıyla son kez karşılaştırılmalıdır.
+Play formunda yaklaşık konum, uygulama işlemleri, teşhisler ve cihaz/diğer
+kimlikler Google Mobile Ads SDK'nın güncel veri açıklamasına göre hem toplanan hem
+paylaşılan olarak işaretlendi. Her veri türü için reklam/pazarlama, analiz ve
+sahtekârlığı önleme amaçları; aktarım sırasında şifreleme ve zorunlu toplama
+yanıtları kaydedildi.
