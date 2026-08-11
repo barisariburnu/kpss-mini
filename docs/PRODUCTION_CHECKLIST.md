@@ -3,7 +3,7 @@
 ## Kod ve yerel paket
 
 - [x] Android paket kimliği `com.gearapps.kpsshapnot`
-- [x] Sürüm `1.0.0`, Android `versionCode` 5
+- [x] Sürüm `1.0.0`, Android `versionCode` 6
 - [x] Android target API 36
 - [x] SQLite içerik ve ilerleme veritabanı
 - [x] Android otomatik yedekleme kapalı
@@ -36,7 +36,8 @@
 - [x] Dahili test `1.0.0 (5)` iki tester için etkin ve kullanılabilir
 - [x] Dahili test sürüm doğrulaması hata ve uyarı olmadan geçti
 - [x] Production dağıtım ülkesi Türkiye olarak ayarlandı
-- [x] `1.0.0 (5) - Production` ve bekleyen mağaza değişiklikleri incelemeye gönderildi
+- [x] Politika uyumlu tam açıklama, bağımsızlık beyanı ve resmî kaynak URL'leri kaydedildi
+- [x] `1.0.0 (6) - Production` ve 10 bekleyen değişiklik yeniden incelemeye gönderildi
 - [ ] Google Play production incelemesi tamamlanmalı
 
 ## Yerel imzalama
@@ -53,10 +54,10 @@
 
 ## Play'e yüklenen production adayı
 
-- Dosya: `builds/kpss-mini-1.0.0-5-local.aab`
-- Android versionCode: `5`
-- SHA-256: `F943B56E33DB18B1744684881A67DB398B459613A3E9047761BF35ED7FFC9598`
-- R8 eşleme dosyası: `builds/kpss-mini-1.0.0-5-mapping.txt`
+- Dosya: `builds/kpss-mini-1.0.0-6-local.aab`
+- Android versionCode: `6`
+- SHA-256: `0F78941FEE72003C95DFD4D20043045E81C662D6A2F0AB20BD8A50A04D883291`
+- R8 eşleme dosyası: `builds/kpss-mini-1.0.0-6-mapping.txt`
 - R8 eşleme SHA-256: `D8DB9025A68F8BD14AA8AA73B69BD3B8590073515224FD58CCE1B1A409153C25`
 - İmza sertifikası: `kpss-mini-upload.jks` sertifikasıyla eşleşiyor
 

@@ -33,13 +33,38 @@
 - Dahili test magazasinda paket adi ve varsayilan Android simgesi gorunmesinin,
   ilk magaza kaydi reddedildigi icin Play'in `unreviewed` gecici gorunumunu
   kullanmasindan kaynaklandigi ekran goruntuleriyle dogrulandi.
+- Magaza kaydinda 512x512 simgenin, ozellik grafiginin ve dort telefon ekran
+  goruntusunun halen yuklu oldugu dogrulandi.
+- Politika uyumlu sorumluluk reddi ve on resmi/birincil kaynak URL'si tam
+  aciklamaya kaydedildi.
+- Yerelde imzalanan `versionCode` 6 AAB production taslagina yuklendi; eski
+  `versionCode` 5 paket taslaktan cikarildi.
+- `1.0.0 (6) - Production` surumu Play dogrulamasinda "Yayinlamaya hazir"
+  sonucunu aldi; yeni yukleme boyutu 13,1 MB ve tahmini indirme suresi 7 saniye.
+- Production surumu, magaza kaydi ve icerik beyanlarini kapsayan 10 degisiklik
+  yeniden incelemeye gonderildi; Yayin Ozeti "Incelenmekte olan degisiklikler"
+  durumunda dogrulandi.
+
+### Dogrulama
+
+- Yerel Gradle `bundleRelease`: Basarili (276 gorev).
+- Yerel AAB: `builds/kpss-mini-1.0.0-6-local.aab`, 30.347.005 bayt.
+- AAB SHA-256:
+  `0F78941FEE72003C95DFD4D20043045E81C662D6A2F0AB20BD8A50A04D883291`.
+- R8 esleme SHA-256:
+  `D8DB9025A68F8BD14AA8AA73B69BD3B8590073515224FD58CCE1B1A409153C25`.
+- AAB sertifika parmak izi yerel upload key sertifikasi ile eslesiyor.
+- `npm run typecheck`: Basarili.
+- `npm run lint`: Basarili.
+- `npm test`: 2 test dosyasinda 10/10 test basarili.
+- `git diff --check`: Basarili.
 
 ### Agent Devir Notu
 
 - Policy issue ID: `4986534170940223184`.
-- Kod ve magaza metni hazirlandiktan sonra yerel v6 AAB alinmali, Play'e
-  yuklenmeli ve reddedilen production degisiklikleri tekrar incelemeye
-  gonderilmelidir.
+- Google Play'in otomatik hizli kontrolleri ve production incelemesi
+  beklenmelidir. Kayit onaylanana kadar dahili test sayfasinda gecici paket adi
+  ve varsayilan simge gorunmeye devam edebilir.
 
 ## [1.0.0-internal-test] - 2026-08-09
 
