@@ -53,11 +53,8 @@ açıldığı anda derslerin ve günlük hedefin hazırdır.
 - Her kartta ilgili resmî veya birincil kaynak bağlantısı
 - Sade, okunabilir ve tek elle kullanıma uygun mobil arayüz
 
-Çalışma ilerlemen yalnızca cihazında saklanır. Uygulama açılışta, cevap öncesinde
-veya kartlar arasında reklam göstermez. Ana sayfanın alt bölümünde çalışma
-akışını kesmeyen bir banner bulunur. Geçiş reklamı yalnızca tamamlanan bir çalışma
-oturumundan çıkarken, en erken her üç oturumda bir ve en az 12 saat arayla
-gösterilebilir.
+Çalışma ilerlemen yalnızca cihazında saklanır. Mevcut 1.0.0 (6) sürümü reklam
+göstermez.
 
 KPSS çalışmalarını küçük ama sürdürülebilir adımlara bölmek istiyorsan KPSS
 Mini'yi indir, ilk dersini seç ve bugünün kartlarını hemen tamamlamaya başla.

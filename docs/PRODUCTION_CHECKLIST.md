@@ -32,9 +32,9 @@
 - [x] Android reklam kimliği kullanılmıyor beyanı kaydedildi
 - [x] Yerel AAB Play App Signing akışına yüklendi
 - [x] Play App Signing ve otomatik koruma etkin
-- [x] Dahili test sürüm adı ve Türkçe sürüm notları hazır
-- [x] Dahili test `1.0.0 (5)` iki tester için etkin ve kullanılabilir
-- [x] Dahili test sürüm doğrulaması hata ve uyarı olmadan geçti
+- [x] Dahili test `1.0.0 (5)` sürüm doğrulaması hata ve uyarı olmadan geçti
+- [x] Production erişimi açık; yeni sürümler için zorunlu 12 kullanıcı/14 gün kapısı yok
+- [x] Dahili test kanalı duraklatıldı ve boş test taslağı silindi
 - [x] Production dağıtım ülkesi Türkiye olarak ayarlandı
 - [x] Politika uyumlu tam açıklama, bağımsızlık beyanı ve resmî kaynak URL'leri kaydedildi
 - [x] `1.0.0 (6) - Production` ve 10 bekleyen değişiklik yeniden incelemeye gönderildi

@@ -1,5 +1,36 @@
 # Degisiklik Gunlugu
 
+## [1.0.0-play-resubmission] - 2026-08-11
+
+### Play Console
+
+- Son yerel `versionCode` 7 AAB yüklenmedi; inceleme kapsamındaki paket reklamsız
+  `1.0.0 (6) - Production` olarak korundu.
+- Zorunlu test kapısı bulunmadığı için dahili test kanalı duraklatıldı. Test
+  kullanıcıları artık sürümü alamaz; yanlışlıkla açılmış boş dahili test taslağı
+  silindi. Play'in geçmiş kaydı olan `1.0.0 (5) - Dahili Test` silinemez ancak
+  kanal etkin değildir.
+- Kullanıcının mağaza açıklamasındaki satır düzenlemeleri korundu. Reklamlı v7
+  yüklenmediği için açıklamadaki banner/geçiş reklamı paragrafı kaldırılarak
+  mevcut v6 ile uyumlu "Mevcut 1.0.0 (6) sürümü reklam göstermez" ifadesi
+  kaydedildi.
+- Güncel tam açıklama ve dört telefon ekran görüntüsü incelemeye gönderildi.
+  Play'in mevcut incelemenin iptal edilip yeniden başlayacağı uyarısı kabul
+  edilerek gönderim güncel mağaza varlıklarıyla yeniden başlatıldı.
+- Yayın özetinde incelemeye gönderilmemiş değişiklik kalmadığı ve production v6,
+  mağaza kaydı, uygulama içeriği ile mağaza ayarlarının birlikte incelemede olduğu
+  doğrulandı.
+- Politika Durumu sayfasındaki 10 Ağustos 2026 tarihli Yanıltıcı İddialar kaydı
+  geçmiş ret olarak duruyor; sayfa güncel düzeltmenin incelemede olduğunu
+  bildiriyor. Yeni veya ayrı bir politika uyarısı görülmedi.
+
+### Dogrulama
+
+- Bu işlemde uygulama kodu veya AAB değiştirilmedi; yeni derleme oluşturulmadı
+  ve yüklenmedi.
+- Play Console dahili test kanal durumu: `Etkin değil` / `Bu kanal duraklatıldı`.
+- Play Console yayın durumu: `İncelenmekte olan değişiklikler`.
+
 ## [1.0.0-interstitial-and-listing-refresh] - 2026-08-11
 
 ### Eklendi
