@@ -1,5 +1,59 @@
 # Degisiklik Gunlugu
 
+## [1.0.0-interstitial-and-listing-refresh] - 2026-08-11
+
+### Eklendi
+
+- AdMob production hesabında `Çalışma Tamamlama Geçiş - Production` reklam
+  birimi oluşturuldu; birim kimliği
+  `ca-app-pub-8939295877328751/8794011621` olarak release yapılandırmasına eklendi.
+- Geçiş reklamı yalnızca kullanıcı bir çalışma oturumunu tamamlayıp sonuç
+  ekranından ayrılırken, her 3 tamamlanan oturumda bir ve son gösterimden en az
+  12 saat sonra uygun olacak şekilde sınırlandı. Erken çıkışta, uygulama
+  açılışında, kartlar arasında veya reklam hazır değilken akış bekletilmez.
+- Son geçiş reklamı zamanını cihazdaki SQLite ayarlarında saklayan idempotent
+  veritabanı v3 migrasyonu ve reklam uygunluk kuralları için otomatik testler
+  eklendi.
+- Gerçek KPSS içeriğini editoryal staging veritabanına hazırlamak için
+  `docs/AI_CONTENT_GENERATION_PROMPT.md` ve makinece doğrulanabilir
+  `docs/ai-content-card.schema.json` eklendi. JSONL yalnızca aktarım biçimidir;
+  uygulama çalışma zamanında JSON dosyası okumaz.
+
+### Play Console
+
+- `versionCode` 6 kaynak kodundan yerel Android emülatöründe 1080x1920 boyutunda
+  dört güncel telefon ekran görüntüsü alındı. Ana ekranda sağ üst sayaç yoktur,
+  hedef halkası ortalıdır ve alt navigasyon beyaz zemini sistem çubuğuna uzanır.
+- Eski dört telefon görseli varsayılan mağaza kaydından kaldırıldı; yeni görseller
+  ana ekran, konu seçimi, kart ve cevap/resmî kaynak sırasıyla yüklendi.
+- Resmî kaynaklar, bağımsızlık beyanı ve kullanıcı faydalarını açıklayan 2.671
+  karakterlik ayrıntılı mağaza açıklaması kaydedildi. Değişiklikler taslaktadır;
+  incelemedeki reklamsız v6 geri çekilmedi.
+- Hesapta production erişimi açık olduğu için gelecek sürümlerde yeni bir
+  12 kullanıcı/14 gün zorunluluğu yoktur. Reklamlı v7 için dahili test zorunlu
+  değil ancak UMP, reklam sıklığı, çökme ve cihaz davranışını production öncesi
+  doğrulamak üzere önerilen yayın adımıdır.
+
+### Dogrulama
+
+- `npm run typecheck`: Başarılı.
+- `npm run lint`: Başarılı.
+- `npm test`: 3 test dosyasında 14/14 test başarılı.
+- Yerel Gradle `bundleRelease`: Başarılı.
+- Yerel staging AAB: `builds/kpss-mini-1.0.0-7-local.aab`, 34.290.860 bayt.
+- AAB SHA-256:
+  `5D7D0DE64E1B4F9122165C33818174E8A12720178ED7657C7859D6ABF98018B0`.
+- R8 mapping SHA-256:
+  `B607006F647810009F884B2A21772F5ED69BEE1E1D802B3306CA3E38C4FD9834`.
+- AAB yerel upload key ile imzalandı; Expo/EAS bulut derleme veya imzalama
+  hizmeti kullanılmadı.
+
+### Agent Devir Notu
+
+- v7 paketi henüz Play'e yüklenmedi. Önce reklamsız v6 incelemesi sonuçlanmalı;
+  ardından mağaza-AdMob bağlantısı, kök `app-ads.txt`, reklam/Reklam Kimliği/Veri
+  Güvenliği beyanları ve dahili test aynı v7 sürümüyle tamamlanmalıdır.
+
 ## [1.0.0-admob-production-prep] - 2026-08-11
 
 ### Degistirildi

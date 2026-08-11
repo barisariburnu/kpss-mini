@@ -23,9 +23,11 @@ uygulama yapılandırmasında kapalıdır.
 
 ## Reklam ve Google Mobile Ads
 
-Uygulama, ana ekranın alt bölümünde rahatsız etmeyen bir banner reklam
-göstermek için Google AdMob ve Google Mobile Ads SDK kullanır. Açılışta, bilgi
-kartları arasında veya tam ekran reklam gösterilmez. Reklam istekleri varsayılan
+Uygulama, ana ekranın alt bölümünde rahatsız etmeyen bir banner reklam ve doğal
+bir çalışma tamamlanma anında seyrek geçiş reklamı göstermek için Google AdMob
+ve Google Mobile Ads SDK kullanır. Geçiş reklamı en erken her üç tamamlanan
+oturumda bir ve en az 12 saat arayla gösterilebilir. Açılışta, cevap öncesinde
+veya bilgi kartları arasında reklam gösterilmez. Reklam istekleri varsayılan
 olarak kişiselleştirilmemiş reklamlarla sınırlandırılmıştır.
 
 Google Mobile Ads SDK; reklam sunumu, ölçüm, analiz ve sahtekârlığın önlenmesi

@@ -1,5 +1,5 @@
 export const DATABASE_NAME = 'kpss-hap-not.db';
-export const DATABASE_VERSION = 2;
+export const DATABASE_VERSION = 3;
 
 export const MIGRATION_V1 = `
 CREATE TABLE IF NOT EXISTS subjects (
@@ -250,4 +250,9 @@ VALUES ('content_version', '2', CURRENT_TIMESTAMP)
 ON CONFLICT(key) DO UPDATE SET
   value = excluded.value,
   updated_at = CURRENT_TIMESTAMP;
+`;
+
+export const MIGRATION_V3 = `
+INSERT OR IGNORE INTO app_stats(key, value)
+VALUES ('last_interstitial_at_ms', 0);
 `;

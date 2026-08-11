@@ -85,6 +85,14 @@ function KpssApp() {
     setTopicSubjectId(returnSubjectId ?? null);
   }
 
+  async function closeCompletedSession() {
+    const adShown = await mobileAds.showInterstitialAtNaturalBreak(
+      progress.completedSessions,
+      closeSession,
+    );
+    if (!adShown) closeSession();
+  }
+
   function changeTab(tab: TabId) {
     setTopicSubjectId(null);
     setActiveTab(tab);
@@ -137,6 +145,7 @@ function KpssApp() {
         onRate={rate}
         onToggleSaved={save}
         onFinish={finishSession}
+        onDone={closeCompletedSession}
       />
     );
   }

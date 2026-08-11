@@ -82,12 +82,14 @@ repository üzerinden SQLite sorgularıyla gelir.
 
 ## Reklam Stratejisi
 
-Android `versionCode` 7 adayı, Google AdMob'u yalnızca ana sayfada ve ders
-listesinden sonra gösterilen sabit bir banner için kullanır.
+Android `versionCode` 7 adayı, Google AdMob'u ana sayfadaki sabit banner ve
+tamamlanan çalışma oturumlarındaki seyrek doğal geçiş için kullanır.
 
 - Geliştirme yapılarında Google'ın test reklam birimi, release yapılarında
   production reklam birimi kullanılır.
-- Açılış, tam ekran, geçiş, kart arası ve ödüllü reklam kullanılmaz.
+- Geçiş reklamı yalnızca sonuç ekranından çıkarken, her üç tamamlanan oturumda
+  bir ve en az 12 saat arayla gösterilebilir.
+- Açılışta, cevap öncesinde, kartlar arasında ve alt ekranlarda reklam gösterilmez.
 - Çalışma, kaydedilenler ve ilerleme ekranları reklamsızdır.
 - Reklam alanı açıkça `REKLAM` etiketi taşır; yüklenemezse ekrandan kaldırılır.
 - Google User Messaging Platform rıza durumu uygun olmadan reklam SDK'sı

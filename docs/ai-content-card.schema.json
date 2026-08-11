@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gearapps.example/schemas/kpss-content-card-v1.json",
+  "title": "KPSS Mini AI Content Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "subjectId",
+    "topic",
+    "prompt",
+    "answer",
+    "detail",
+    "memoryTip",
+    "sourceName",
+    "sourceUrl",
+    "sourcePublishedAt",
+    "sourceAccessedAt",
+    "validUntil",
+    "contentVersion",
+    "isVerified",
+    "reviewStatus",
+    "riskFlags"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(turkce|matematik|tarih|cografya|vatandaslik|guncel)-[a-z0-9-]+-[0-9]{3}$",
+      "maxLength": 160
+    },
+    "subjectId": {
+      "enum": ["turkce", "matematik", "tarih", "cografya", "vatandaslik", "guncel"]
+    },
+    "topic": { "type": "string", "minLength": 2, "maxLength": 100 },
+    "prompt": { "type": "string", "minLength": 20, "maxLength": 220 },
+    "answer": { "type": "string", "minLength": 2, "maxLength": 300 },
+    "detail": { "type": "string", "minLength": 40, "maxLength": 700 },
+    "memoryTip": { "type": ["string", "null"], "maxLength": 240 },
+    "sourceName": { "type": "string", "minLength": 3, "maxLength": 180 },
+    "sourceUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "sourcePublishedAt": { "type": ["string", "null"], "format": "date" },
+    "sourceAccessedAt": { "type": "string", "format": "date" },
+    "validUntil": { "type": ["string", "null"], "format": "date" },
+    "contentVersion": { "type": "integer", "minimum": 1 },
+    "isVerified": { "const": false },
+    "reviewStatus": { "const": "needs_human_review" },
+    "riskFlags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "current_info",
+          "legal_change_risk",
+          "numeric_fact",
+          "ambiguous_wording",
+          "source_scope_unclear"
+        ]
+      }
+    }
+  }
+}

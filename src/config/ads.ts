@@ -4,3 +4,6 @@ export const ADMOB_BANNER_UNIT_ID = __DEV__
   ? TestIds.BANNER
   : 'ca-app-pub-8939295877328751/1793349381';
 
+export const ADMOB_INTERSTITIAL_UNIT_ID = __DEV__
+  ? TestIds.INTERSTITIAL
+  : 'ca-app-pub-8939295877328751/8794011621';

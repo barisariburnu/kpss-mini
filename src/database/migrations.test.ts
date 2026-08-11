@@ -1,7 +1,7 @@
 import { DatabaseSync } from 'node:sqlite';
 import { afterEach, describe, expect, it } from 'vitest';
 
-import { MIGRATION_V1, MIGRATION_V2 } from './migrations';
+import { MIGRATION_V1, MIGRATION_V2, MIGRATION_V3 } from './migrations';
 
 describe('SQLite content migration', () => {
   let database: DatabaseSync | null = null;
@@ -73,5 +73,17 @@ describe('SQLite content migration', () => {
         "INSERT INTO card_progress(card_id, status) VALUES ('turkce-1', 'invalid')",
       ),
     ).toThrow();
+  });
+
+  it('adds an idempotent interstitial frequency timestamp', () => {
+    database = new DatabaseSync(':memory:');
+    database.exec(MIGRATION_V1);
+    database.exec(MIGRATION_V3);
+    database.exec(MIGRATION_V3);
+
+    const row = database
+      .prepare("SELECT value FROM app_stats WHERE key = 'last_interstitial_at_ms'")
+      .get() as { value: number };
+    expect(row.value).toBe(0);
   });
 });

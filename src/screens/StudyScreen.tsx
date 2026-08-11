@@ -23,6 +23,7 @@ type Props = {
   onRate: (cardId: string, rating: Rating) => void;
   onToggleSaved: (cardId: string) => void;
   onFinish: () => void;
+  onDone: () => Promise<void>;
 };
 
 export function StudyScreen({
@@ -35,6 +36,7 @@ export function StudyScreen({
   onRate,
   onToggleSaved,
   onFinish,
+  onDone,
 }: Props) {
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -85,7 +87,7 @@ export function StudyScreen({
         </View>
         <Pressable
           accessibilityRole="button"
-          onPress={onClose}
+          onPress={() => void onDone()}
           style={({ pressed }) => [
             styles.doneButton,
             pressed && styles.buttonPressed,

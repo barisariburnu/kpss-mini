@@ -7,6 +7,7 @@ import {
   DATABASE_VERSION,
   MIGRATION_V1,
   MIGRATION_V2,
+  MIGRATION_V3,
 } from './migrations';
 
 type VersionRow = { user_version: number };
@@ -44,6 +45,14 @@ async function migrateDatabase(db: SQLite.SQLiteDatabase) {
     await db.withTransactionAsync(async () => {
       const transaction = db;
       await transaction.execAsync(MIGRATION_V2);
+      await transaction.execAsync('PRAGMA user_version = 2;');
+    });
+  }
+
+  if (currentVersion < 3) {
+    await db.withTransactionAsync(async () => {
+      const transaction = db;
+      await transaction.execAsync(MIGRATION_V3);
       await transaction.execAsync(`PRAGMA user_version = ${DATABASE_VERSION};`);
     });
   }
@@ -176,5 +185,23 @@ export async function persistCompletedSession() {
     `INSERT INTO app_stats(key, value)
      VALUES ('completed_sessions', 1)
      ON CONFLICT(key) DO UPDATE SET value = value + 1`,
+  );
+}
+
+export async function loadLastInterstitialShownAt(): Promise<number | null> {
+  const db = await getDatabase();
+  const row = await db.getFirstAsync<StatRow>(
+    "SELECT value FROM app_stats WHERE key = 'last_interstitial_at_ms'",
+  );
+  return row && row.value > 0 ? row.value : null;
+}
+
+export async function persistInterstitialShownAt(timestampMs = Date.now()) {
+  const db = await getDatabase();
+  await db.runAsync(
+    `INSERT INTO app_stats(key, value)
+     VALUES ('last_interstitial_at_ms', ?)
+     ON CONFLICT(key) DO UPDATE SET value = excluded.value`,
+    timestampMs,
   );
 }

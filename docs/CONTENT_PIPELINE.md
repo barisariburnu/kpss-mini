@@ -21,6 +21,9 @@ Mobil cihazdaki kpss-hap-not.db
 ```
 
 PostgreSQL için başlangıç şeması `docs/content-backend-schema.sql` dosyasındadır.
+AI destekli taslak üretim için `docs/AI_CONTENT_GENERATION_PROMPT.md`, makine
+doğrulaması için `docs/ai-content-card.schema.json` kullanılabilir. AI çıktısı
+yalnızca staging aktarımıdır; mobil uygulamada JSON/JSONL veri kaynağı olmaz.
 
 ## Gerçek içerik nereden gelmeli?
 
