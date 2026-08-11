@@ -1,5 +1,72 @@
 # Degisiklik Gunlugu
 
+## [1.0.0-admob-production-prep] - 2026-08-11
+
+### Degistirildi
+
+- Android `versionCode` 7 adayına Google Mobile Ads ve User Messaging Platform
+  eklendi; geliştirmede test, release'te production banner kimliği kullanılır.
+- Reklam SDK'sı yalnızca UMP rıza durumu reklam isteğine izin verdiğinde başlatılır;
+  ölçüm başlatması rıza alınana kadar geciktirilir.
+- Yalnızca ana sayfada, ders kartlarından sonra gösterilen ve çalışma akışını
+  kesmeyen adaptive banner eklendi. Açılış, tam ekran, geçiş ve kart arası reklam
+  eklenmedi.
+- Kullanıcının gerektiğinde UMP gizlilik tercihlerini yeniden açabileceği bağlantı
+  ana sayfa bilgi alanına eklendi.
+- Gizlilik politikası Google Mobile Ads veri davranışları, iletişim adresi ve
+  kullanıcı kontrol yollarıyla güncellendi.
+- `docs/app-ads.txt`, ilk yayın/yasal süreç ve anahtar yedekleme rehberi eklendi.
+- README ve production kontrol listesi reklamsız v6 ile AdMob'lu v7 arasındaki
+  aşamalı yayın sırasını açıklayacak biçimde güncellendi.
+
+### AdMob
+
+- `huseyinariburnu@gmail.com` hesabında `KPSS Mini: Bilgi Kartları` Android
+  uygulaması ve `Ana Sayfa Alt Banner - Production` reklam birimi oluşturuldu.
+- Türkçe varsayılan ve İngilizce ek dilli Avrupa rıza mesajı, izin verme,
+  seçenekleri yönetme ve izin vermeme seçenekleriyle yayınlandı.
+- Uygulama Play mağazasında henüz herkese açık olmadığı için AdMob mağaza bağlantısı
+  ve uygulama hazırlık incelemesi bekleyen production adımı olarak bırakıldı.
+
+### Play Console
+
+- Mağaza iletişim sitesi `https://barisariburnu.github.io/kpss-mini/` olarak
+  kaydedilip yayınlandı.
+- 2.554 karakterlik ayrıntılı, fayda ve ASO odaklı tam açıklama mağaza kaydına
+  taslak olarak kaydedildi; mevcut v6 incelemesi geri çekilmedi.
+- İncelemedeki v6 paketi reklamsız olduğu için reklam, Reklam Kimliği ve Veri
+  Güvenliği beyanları değiştirilmedi. Bu alanlar AdMob'lu v7 yüklenirken birlikte
+  güncellenmelidir.
+
+### Agent Devir Notu
+
+- Production erişimi bu hesapta açıktır ve v6 incelemededir; 12 kullanıcı/14 gün
+  kapısı mevcut yayını engellememektedir.
+- v6 yayınlandıktan sonra Play mağaza kaydını AdMob uygulamasına bağla,
+  `app-ads.txt` doğrulamasını bekle, Play beyanlarını güncelle ve ancak sonra
+  yerel imzalı v7 AAB'yi yükle.
+
+### Dogrulama
+
+- `react-native-google-mobile-ads` 16.4.0 / Google Ads 25.4.0'ın Expo 57 Kotlin
+  2.1.20 zinciriyle uyumsuz olduğu yerel build'de yakalandı; aynı API'yi kullanan
+  15.8.0 / Google Ads 24.6.0 sürümü kesin olarak sabitlendi.
+- Yerel Gradle `bundleRelease`: Başarılı (314 görev).
+- Yerel staging AAB: `builds/kpss-mini-1.0.0-7-local.aab`, 34.289.286 bayt.
+- AAB SHA-256:
+  `D38B1038407DBAEFA3E7B3EE47424277A90AB5C9DBA753C5E255FAFABC4AA3B1`.
+- R8 mapping SHA-256:
+  `B607006F647810009F884B2A21772F5ED69BEE1E1D802B3306CA3E38C4FD9834`.
+- AAB imza sertifikası yerel upload key ile eşleşiyor.
+- AAB manifestinde paket kimliği, production AdMob App ID, gecikmeli ölçüm,
+  internet ve Reklam Kimliği izinleri doğrulandı.
+- `npm run typecheck`: Başarılı.
+- `npm run lint`: Başarılı.
+- `npm test`: 2 test dosyasında 10/10 test başarılı.
+- `npm audit --omit=dev`: Expo/Metro dolaylı araç zincirinde 8 orta ve 12 yüksek
+  bulgu; önerilen `--force` çözümü React Native/Expo'yu kırıcı biçimde geriye
+  düşürdüğü için uygulanmadı.
+
 ## [1.0.0-policy-compliance] - 2026-08-11
 
 ### Degistirildi

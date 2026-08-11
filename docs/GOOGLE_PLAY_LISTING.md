@@ -30,7 +30,16 @@ duyuruları, takvimleri ve kılavuzları için yalnızca ÖSYM'nin resmî sitesi
 kullanın: https://www.osym.gov.tr/
 
 KPSS Mini, Genel Yetenek ve Genel Kültür bilgilerini kısa çalışma
-oturumlarıyla tekrar etmen için tasarlanmış sade bir mobil uygulamadır.
+oturumlarıyla tekrar etmen için tasarlanmış sade bir mobil uygulamadır. Uzun
+çalışma programlarının arasındaki birkaç dakikayı bile verimli bir tekrara
+dönüştürür: kartı oku, cevabı hatırla, öğrendiğini işaretle ve tekrar edilmesi
+gereken bilgilere daha sonra geri dön.
+
+KPSS hazırlığını yanında taşı
+
+Otobüste, sırada beklerken veya çalışma molasında hızlıca bir konu seçip
+başlayabilirsin. Üyelik, giriş ekranı ya da karmaşık ayarlar yoktur. Uygulama
+açıldığı anda derslerin ve günlük hedefin hazırdır.
 
 Öne çıkanlar:
 
@@ -41,9 +50,15 @@ oturumlarıyla tekrar etmen için tasarlanmış sade bir mobil uygulamadır.
 - Kaydedilen kartlar
 - Günlük hedef ve temel ilerleme görünümü
 - Hesap gerektirmeyen çevrimdışı kullanım
+- Her kartta ilgili resmî veya birincil kaynak bağlantısı
+- Sade, okunabilir ve tek elle kullanıma uygun mobil arayüz
 
 Çalışma ilerlemen yalnızca cihazında saklanır. Uygulama açılışta veya kartlar
-arasında tam ekran reklam göstermez.
+arasında tam ekran reklam göstermez. Yalnızca ana sayfanın alt bölümünde,
+çalışma akışını kesmeyen tek bir banner reklam alanı bulunur.
+
+KPSS çalışmalarını küçük ama sürdürülebilir adımlara bölmek istiyorsan KPSS
+Mini'yi indir, ilk dersini seç ve bugünün kartlarını hemen tamamlamaya başla.
 
 KPSS Mini, gearapps tarafından geliştirilen bağımsız bir çalışma aracıdır;
 ÖSYM'yi veya başka bir kamu kurumunu temsil etmez. Uygulamadaki içerikler sınav

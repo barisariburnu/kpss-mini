@@ -20,7 +20,7 @@
     },
     "android": {
       "package": "com.gearapps.kpsshapnot",
-      "versionCode": 6,
+      "versionCode": 7,
       "predictiveBackGestureEnabled": true,
       "allowBackup": false,
       "adaptiveIcon": {
@@ -35,6 +35,15 @@
     "plugins": [
       "expo-sqlite",
       [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-8939295877328751~7924357471",
+          "delayAppMeasurementInit": true,
+          "optimizeInitialization": true,
+          "optimizeAdLoading": true
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "image": "./assets/app-icon.png",
@@ -48,5 +57,9 @@
       "developerName": "gearapps",
       "contentDatabase": "kpss-hap-not.db"
     }
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-8939295877328751~7924357471",
+    "delay_app_measurement_init": true
   }
 }

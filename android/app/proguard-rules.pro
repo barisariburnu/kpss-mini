@@ -12,3 +12,6 @@
 -keep class com.facebook.react.turbomodule.** { *; }
 
 # Add any project specific keep options here:
+
+# Google User Messaging Platform consent SDK
+-keep class com.google.android.gms.internal.consent_sdk.** { *; }

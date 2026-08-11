@@ -13,6 +13,7 @@ import { StatusBar } from 'expo-status-bar';
 import { BottomNav, type TabId } from './src/components/BottomNav';
 import { buildStudyQueue } from './src/domain/progress';
 import { useAppData } from './src/hooks/useAppData';
+import { useMobileAds } from './src/hooks/useMobileAds';
 import { HomeScreen } from './src/screens/HomeScreen';
 import { ProgressScreen } from './src/screens/ProgressScreen';
 import { SavedScreen } from './src/screens/SavedScreen';
@@ -29,6 +30,7 @@ type Session = {
 };
 
 function KpssApp() {
+  const mobileAds = useMobileAds();
   const {
     subjects,
     cards,
@@ -167,6 +169,9 @@ function KpssApp() {
             progress={progress}
             onStartDaily={startDaily}
             onStartSubject={openSubject}
+            adsReady={mobileAds.isReady}
+            canOpenAdPrivacy={mobileAds.canOpenPrivacyOptions}
+            onOpenAdPrivacy={mobileAds.openPrivacyOptions}
           />
         ) : null}
         {activeTab === 'saved' ? (

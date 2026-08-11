@@ -1,6 +1,6 @@
 # Production Kontrol Listesi
 
-## Kod ve yerel paket
+## Kod ve yerel paket (Play'de incelemedeki v6)
 
 - [x] Android paket kimliği `com.gearapps.kpsshapnot`
 - [x] Sürüm `1.0.0`, Android `versionCode` 6
@@ -73,3 +73,34 @@ npm run android:bundle
 Android production build doğrudan yerel Gradle ile alınır. Expo/EAS bulut
 derlemesi, yüklemesi veya uzaktan keystore yönetimi kullanılmaz. Uygulama çalışma
 zamanında yerel Expo SDK modüllerini kullanmaya devam eder.
+
+## versionCode 7 AdMob production adayı
+
+- [x] AdMob hesabı `huseyinariburnu@gmail.com` altında Android uygulaması oluşturuldu
+- [x] AdMob uygulama kimliği ve yalnızca ana sayfa banner reklam birimi tanımlandı
+- [x] Development için Google test reklam kimliği, release için production birim kimliği ayrıldı
+- [x] UMP rıza akışı ve gecikmeli reklam SDK başlatması uygulandı
+- [x] Türkçe varsayılan, İngilizce ek dilli Avrupa rıza mesajı yayınlandı
+- [x] Gizlilik politikası Google Mobile Ads veri davranışıyla güncellendi
+- [x] `docs/app-ads.txt` yayıncı kaydı eklendi
+- [x] Play mağaza iletişim sitesi `https://barisariburnu.github.io/kpss-mini/` olarak yayınlandı
+- [x] Ayrıntılı ve ASO odaklı tam açıklama Play Console'a taslak olarak kaydedildi
+- [ ] İncelemedeki reklamsız `versionCode` 6 production'da yayınlanmalı
+- [ ] Yayındaki Play mağaza kaydı AdMob uygulamasına bağlanmalı
+- [ ] `app-ads.txt` AdMob tarafından doğrulanmalı ve uygulama hazırlık incelemesi tamamlanmalı
+- [ ] Play Console reklam beyanı, Reklam Kimliği ve Veri Güvenliği alanları v7 ile uyumlu güncellenmeli
+- [ ] Yerel imzalı `versionCode` 7 AAB yalnızca yukarıdaki beyanlarla birlikte Play'e yüklenmeli
+
+Yerel staging doğrulaması:
+
+- Dosya: `builds/kpss-mini-1.0.0-7-local.aab`
+- Android versionCode: `7`
+- SHA-256: `D38B1038407DBAEFA3E7B3EE47424277A90AB5C9DBA753C5E255FAFABC4AA3B1`
+- R8 mapping SHA-256: `B607006F647810009F884B2A21772F5ED69BEE1E1D802B3306CA3E38C4FD9834`
+- İmza sertifikası: yerel `kpss-mini-upload.jks` sertifikasıyla eşleşiyor
+- AAB manifesti: production AdMob App ID, gecikmeli ölçüm, `AD_ID` ve internet izni doğrulandı
+
+> İncelemedeki v6 paketi reklam SDK'sı içermediği için mevcut “reklam yok”,
+> “Reklam Kimliği kullanılmıyor” ve veri toplanmıyor beyanları bugün doğrudur.
+> Bu beyanlar v7 yüklenmeden önce değiştirilirse paket ile mağaza beyanı
+> çelişeceğinden mevcut incelemeye dokunulmamıştır.

@@ -16,7 +16,7 @@ bulutu kullanılmadan, doğrudan yerel Gradle ve kullanıcıya ait upload key il
 - Kaydedilen kartlar
 - Genel ve ders bazlı ilerleme
 - İçerik ve ilerleme için cihazda kalıcı SQLite veritabanı
-- Hesap, kişisel veri toplama ve reklam SDK'sı olmadan kullanım
+- Hesap gerektirmeyen kullanım ve cihazda tutulan çalışma ilerlemesi
 
 Hesap, sunucu, bildirim, sosyal özellik, lig, yapay zekâ, ödeme ve kapsamlı
 deneme sınavı motoru bilinçli olarak MVP dışında tutulmuştur.
@@ -82,16 +82,21 @@ repository üzerinden SQLite sorgularıyla gelir.
 
 ## Reklam Stratejisi
 
-MVP gerçek bir reklam SDK'sı, takip kodu veya kullanıcıya gösterilen sahte reklam
-alanı içermez.
+Android `versionCode` 7 adayı, Google AdMob'u yalnızca ana sayfada ve ders
+listesinden sonra gösterilen sabit bir banner için kullanır.
 
-- Gerçek entegrasyon yapılırsa yalnızca ana sayfada, ders listesinden sonra doğal
-  banner kullanılacaktır.
-- Açılış, tam ekran, geçiş ve ödüllü reklam kullanılmaz.
+- Geliştirme yapılarında Google'ın test reklam birimi, release yapılarında
+  production reklam birimi kullanılır.
+- Açılış, tam ekran, geçiş, kart arası ve ödüllü reklam kullanılmaz.
 - Çalışma, kaydedilenler ve ilerleme ekranları reklamsızdır.
-- Alan sessiz, sabit, açıkça `Sponsorlu` etiketli ve kapatılabilir olmalıdır.
-- Reklam ağı bağlanacağı zaman kullanıcı rızası, mağaza politikaları ve çocuklara
-  yönelik içerik gereklilikleri ayrıca uygulanmalıdır.
+- Reklam alanı açıkça `REKLAM` etiketi taşır; yüklenemezse ekrandan kaldırılır.
+- Google User Messaging Platform rıza durumu uygun olmadan reklam SDK'sı
+  başlatılmaz; gerekli kullanıcılar tercihlerini uygulamadan yeniden açabilir.
+- Reklam istekleri kişiselleştirilmemiş reklamlarla sınırlandırılmıştır.
+
+Play'de incelemede olan `versionCode` 6 reklamsızdır. Reklamlı `versionCode` 7,
+v6 mağazada yayınlandıktan, uygulama AdMob'a mağaza üzerinden bağlandıktan ve Play
+reklam/Veri Güvenliği beyanları güncellendikten sonra yüklenmelidir.
 
 ## Kaynak Yapısı
 

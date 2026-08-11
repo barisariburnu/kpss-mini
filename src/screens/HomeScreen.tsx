@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+import { AdBanner } from '../components/AdBanner';
 import { ProgressBar } from '../components/ProgressBar';
 import { SubjectMark } from '../components/SubjectMark';
 import { DAILY_GOAL, subjectCompletion } from '../domain/progress';
@@ -25,6 +26,9 @@ type Props = {
   progress: ProgressState;
   onStartDaily: () => void;
   onStartSubject: (subjectId: SubjectId) => void;
+  adsReady: boolean;
+  canOpenAdPrivacy: boolean;
+  onOpenAdPrivacy: () => Promise<void>;
 };
 
 export function HomeScreen({
@@ -33,6 +37,9 @@ export function HomeScreen({
   progress,
   onStartDaily,
   onStartSubject,
+  adsReady,
+  canOpenAdPrivacy,
+  onOpenAdPrivacy,
 }: Props) {
   const dailyCount = progress.daily.studiedIds.length;
   const dailyPercent = Math.min(100, Math.round((dailyCount / DAILY_GOAL) * 100));
@@ -141,6 +148,8 @@ export function HomeScreen({
         })}
       </View>
 
+      <AdBanner isReady={adsReady} />
+
       <View style={styles.disclaimerBox}>
         <Ionicons name="information-circle-outline" size={18} color={colors.inkMuted} />
         <View style={styles.disclaimerCopy}>
@@ -156,6 +165,16 @@ export function HomeScreen({
           >
             <Text style={styles.officialLink}>Resmî sınav bilgileri: osym.gov.tr</Text>
           </Pressable>
+          {canOpenAdPrivacy ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Reklam gizlilik tercihlerini aç"
+              onPress={() => void onOpenAdPrivacy()}
+              style={({ pressed }) => pressed && styles.officialLinkPressed}
+            >
+              <Text style={styles.privacyLink}>Reklam gizlilik tercihleri</Text>
+            </Pressable>
+          ) : null}
         </View>
       </View>
     </ScrollView>
@@ -319,4 +338,12 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   officialLinkPressed: { opacity: 0.65 },
+  privacyLink: {
+    color: colors.inkMuted,
+    fontSize: 10,
+    lineHeight: 15,
+    fontWeight: '700',
+    textDecorationLine: 'underline',
+    marginTop: spacing.xs,
+  },
 });
