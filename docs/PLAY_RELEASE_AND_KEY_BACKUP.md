@@ -32,6 +32,12 @@ https://support.google.com/googleplay/android-developer/answer/14151465
    veri minimizasyonu, saklama ve kullanıcı başvuru süreçleri güncel tutulur.
    Bu madde hukuki danışmanlık yerine geçmez.
 
+AdMob `app-ads.txt` doğrulaması için dosya geliştirici web sitesinin hostname
+kökünde bulunmalıdır. Örneğin mağaza web sitesi
+`https://barisariburnu.github.io/kpss-mini/` ise taranan adres
+`https://barisariburnu.github.io/app-ads.txt` olur; alt dizindeki dosya tek başına
+yeterli değildir.
+
 ## Saklanması gereken imzalama dosyaları
 
 - `kpss-mini-upload.jks`: Yerel upload anahtarının kendisi.

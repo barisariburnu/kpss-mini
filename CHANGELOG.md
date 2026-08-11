@@ -27,6 +27,9 @@
   seçenekleri yönetme ve izin vermeme seçenekleriyle yayınlandı.
 - Uygulama Play mağazasında henüz herkese açık olmadığı için AdMob mağaza bağlantısı
   ve uygulama hazırlık incelemesi bekleyen production adımı olarak bırakıldı.
+- Proje Pages altındaki `/kpss-mini/app-ads.txt` HTTP 200 ve doğru içerikle
+  yayınlandı; AdMob tarayıcısının hostname kökünde `/app-ads.txt` aradığı
+  doğrulandığından kök dosya/redirect ayrıca bekleyen adım olarak kaydedildi.
 
 ### Play Console
 
@@ -43,8 +46,8 @@
 - Production erişimi bu hesapta açıktır ve v6 incelemededir; 12 kullanıcı/14 gün
   kapısı mevcut yayını engellememektedir.
 - v6 yayınlandıktan sonra Play mağaza kaydını AdMob uygulamasına bağla,
-  `app-ads.txt` doğrulamasını bekle, Play beyanlarını güncelle ve ancak sonra
-  yerel imzalı v7 AAB'yi yükle.
+  hostname kökündeki `app-ads.txt` dosyasını yayınla, AdMob doğrulamasını bekle,
+  Play beyanlarını güncelle ve ancak sonra yerel imzalı v7 AAB'yi yükle.
 
 ### Dogrulama
 

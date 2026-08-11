@@ -83,10 +83,12 @@ zamanında yerel Expo SDK modüllerini kullanmaya devam eder.
 - [x] Türkçe varsayılan, İngilizce ek dilli Avrupa rıza mesajı yayınlandı
 - [x] Gizlilik politikası Google Mobile Ads veri davranışıyla güncellendi
 - [x] `docs/app-ads.txt` yayıncı kaydı eklendi
+- [x] Proje Pages adresinde `/kpss-mini/app-ads.txt` içeriği HTTP 200 ile doğrulandı
 - [x] Play mağaza iletişim sitesi `https://barisariburnu.github.io/kpss-mini/` olarak yayınlandı
 - [x] Ayrıntılı ve ASO odaklı tam açıklama Play Console'a taslak olarak kaydedildi
 - [ ] İncelemedeki reklamsız `versionCode` 6 production'da yayınlanmalı
 - [ ] Yayındaki Play mağaza kaydı AdMob uygulamasına bağlanmalı
+- [ ] `https://barisariburnu.github.io/app-ads.txt` kök URL'si dosyayı sunmalı veya çalışan dosyaya yönlendirmeli
 - [ ] `app-ads.txt` AdMob tarafından doğrulanmalı ve uygulama hazırlık incelemesi tamamlanmalı
 - [ ] Play Console reklam beyanı, Reklam Kimliği ve Veri Güvenliği alanları v7 ile uyumlu güncellenmeli
 - [ ] Yerel imzalı `versionCode` 7 AAB yalnızca yukarıdaki beyanlarla birlikte Play'e yüklenmeli
@@ -104,3 +106,8 @@ Yerel staging doğrulaması:
 > “Reklam Kimliği kullanılmıyor” ve veri toplanmıyor beyanları bugün doğrudur.
 > Bu beyanlar v7 yüklenmeden önce değiştirilirse paket ile mağaza beyanı
 > çelişeceğinden mevcut incelemeye dokunulmamıştır.
+
+> AdMob, geliştirici web sitesi URL'sindeki `/kpss-mini/` yolunu kullanmaz;
+> yalnızca hostname kökündeki `/app-ads.txt` adresini tarar. Bu nedenle mevcut
+> proje Pages dosyası herkese açık olsa da doğrulama için `barisariburnu.github.io`
+> kullanıcı sitesi deposunda kök dosya veya başka bir kök alan adı/redirect gerekir.
