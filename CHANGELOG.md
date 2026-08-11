@@ -40,9 +40,9 @@
 - `npm run lint`: Başarılı.
 - `npm test`: 3 test dosyasında 14/14 test başarılı.
 - Yerel Gradle `bundleRelease`: Başarılı.
-- Yerel staging AAB: `builds/kpss-mini-1.0.0-7-local.aab`, 34.290.860 bayt.
+- Yerel staging AAB: `builds/kpss-mini-1.0.0-7-local.aab`, 34.290.877 bayt.
 - AAB SHA-256:
-  `5D7D0DE64E1B4F9122165C33818174E8A12720178ED7657C7859D6ABF98018B0`.
+  `7344E6D9321771CD8E8AC9D9F3FCBC178B033BF6942CBDAAADDC6AB3DD6552D5`.
 - R8 mapping SHA-256:
   `B607006F647810009F884B2A21772F5ED69BEE1E1D802B3306CA3E38C4FD9834`.
 - AAB yerel upload key ile imzalandı; Expo/EAS bulut derleme veya imzalama

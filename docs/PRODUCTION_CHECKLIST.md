@@ -98,8 +98,8 @@ Yerel staging doğrulaması:
 
 - Dosya: `builds/kpss-mini-1.0.0-7-local.aab`
 - Android versionCode: `7`
-- Boyut: `34.290.860` bayt
-- SHA-256: `5D7D0DE64E1B4F9122165C33818174E8A12720178ED7657C7859D6ABF98018B0`
+- Boyut: `34.290.877` bayt
+- SHA-256: `7344E6D9321771CD8E8AC9D9F3FCBC178B033BF6942CBDAAADDC6AB3DD6552D5`
 - R8 mapping SHA-256: `B607006F647810009F884B2A21772F5ED69BEE1E1D802B3306CA3E38C4FD9834`
 - İmza sertifikası: yerel `kpss-mini-upload.jks` sertifikasıyla eşleşiyor
 - AAB manifesti: production AdMob App ID, gecikmeli ölçüm, `AD_ID` ve internet izni doğrulandı
