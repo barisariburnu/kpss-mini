@@ -210,7 +210,7 @@ function KpssApp() {
 export default function App() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
+      <SafeAreaView style={styles.safeArea} edges={['top']}>
         <StatusBar style="dark" />
         <KpssApp />
       </SafeAreaView>

@@ -24,6 +24,11 @@ KPSS bilgi kartlarıyla hızlı tekrar yap, öğrendiklerini kaydet ve ilerle.
 
 ## Tam açıklama
 
+ÖNEMLİ: KPSS Mini, gearapps tarafından geliştirilen bağımsız bir eğitim
+uygulamasıdır. ÖSYM'yi veya herhangi bir kamu kurumunu temsil etmez. Resmî sınav
+duyuruları, takvimleri ve kılavuzları için yalnızca ÖSYM'nin resmî sitesini
+kullanın: https://www.osym.gov.tr/
+
 KPSS Mini, Genel Yetenek ve Genel Kültür bilgilerini kısa çalışma
 oturumlarıyla tekrar etmen için tasarlanmış sade bir mobil uygulamadır.
 
@@ -43,6 +48,21 @@ arasında tam ekran reklam göstermez.
 KPSS Mini, gearapps tarafından geliştirilen bağımsız bir çalışma aracıdır;
 ÖSYM'yi veya başka bir kamu kurumunu temsil etmez. Uygulamadaki içerikler sınav
 sonucu garantisi vermez ve resmî kaynakların yerine geçmez.
+
+İçeriklerin doğrulanması ve güncel resmî bilgi için başvurulan kaynaklar:
+
+- ÖSYM: https://www.osym.gov.tr/
+- Türk Dil Kurumu Yazım Kılavuzu: https://tdk.gov.tr/tdk/kurumsal/yazim-kilavuzu/
+- MEB Öğretim Programları: https://mufredat.meb.gov.tr/
+- Mevzuat Bilgi Sistemi: https://www.mevzuat.gov.tr/
+- Atatürk Ansiklopedisi: https://ataturkansiklopedisi.gov.tr/
+- TÜİK Veri Portalı: https://veriportali.tuik.gov.tr/tr/
+- Birleşmiş Milletler: https://www.un.org/en/about-us
+- UNESCO: https://www.unesco.org/en/brief
+- Dünya Sağlık Örgütü: https://www.who.int/about
+- OECD: https://www.oecd.org/en/about.html
+
+Her bilgi kartında ilgili kaynak adı ve açılabilir kaynak bağlantısı gösterilir.
 
 ## Kategori ve etiketler
 

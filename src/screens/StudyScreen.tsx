@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -173,6 +174,24 @@ export function StudyScreen({
               <Text style={styles.answerEyebrow}>KISA CEVAP</Text>
               <Text style={styles.answer}>{current.answer}</Text>
               <Text style={styles.detail}>{current.detail}</Text>
+              {current.sourceName && current.sourceUrl ? (
+                <Pressable
+                  accessibilityRole="link"
+                  accessibilityLabel={`Resmî kaynağı aç: ${current.sourceName}`}
+                  onPress={() => void Linking.openURL(current.sourceUrl as string)}
+                  style={({ pressed }) => [
+                    styles.sourceBox,
+                    pressed && styles.sourcePressed,
+                  ]}
+                >
+                  <Ionicons name="open-outline" size={18} color={colors.accentDark} />
+                  <View style={styles.sourceCopy}>
+                    <Text style={styles.sourceLabel}>RESMÎ KAYNAK</Text>
+                    <Text style={styles.sourceName}>{current.sourceName}</Text>
+                    <Text style={styles.sourceUrl}>{current.sourceUrl}</Text>
+                  </View>
+                </Pressable>
+              ) : null}
               {current.memoryTip ? (
                 <View style={styles.tipBox}>
                   <Ionicons name="sparkles" size={18} color={colors.amber} />
@@ -324,6 +343,25 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     marginTop: spacing.md,
   },
+  sourceBox: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.sm,
+    backgroundColor: colors.muted,
+    borderRadius: radius.md,
+    padding: spacing.md,
+    marginTop: spacing.lg,
+  },
+  sourcePressed: { opacity: 0.7 },
+  sourceCopy: { flex: 1 },
+  sourceLabel: {
+    color: colors.accentDark,
+    fontSize: 9,
+    letterSpacing: 1.1,
+    fontWeight: '900',
+  },
+  sourceName: { color: colors.ink, fontSize: 12, fontWeight: '800', marginTop: 3 },
+  sourceUrl: { color: colors.accentDark, fontSize: 10, lineHeight: 15, marginTop: 3 },
   tipBox: {
     flexDirection: 'row',
     gap: spacing.md,

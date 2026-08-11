@@ -1,4 +1,5 @@
 import {
+  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -48,17 +49,15 @@ export function HomeScreen({
           <Text style={styles.kicker}>KPSS MINI</Text>
           <Text style={styles.title}>Bugün biraz daha yakın.</Text>
         </View>
-        <View style={styles.streakBadge} accessibilityLabel="Bugünkü çalışma">
-          <Ionicons name="today-outline" size={15} color={colors.amber} />
-          <Text style={styles.streakText}>{dailyCount}</Text>
-        </View>
       </View>
 
       <View style={styles.hero}>
         <View style={styles.heroTop}>
           <View style={styles.ring}>
-            <Text style={styles.ringValue}>{dailyCount}</Text>
-            <Text style={styles.ringGoal}>/{DAILY_GOAL}</Text>
+            <View style={styles.ringContent}>
+              <Text style={styles.ringValue}>{dailyCount}</Text>
+              <Text style={styles.ringGoal}>/{DAILY_GOAL}</Text>
+            </View>
           </View>
           <View style={styles.heroCopy}>
             <Text style={styles.heroEyebrow}>BUGÜNKÜ HEDEF</Text>
@@ -142,10 +141,23 @@ export function HomeScreen({
         })}
       </View>
 
-      <Text style={styles.disclaimer}>
-        gearapps tarafından geliştirilen bağımsız bir çalışma aracıdır. ÖSYM’yi
-        veya başka bir kamu kurumunu temsil etmez.
-      </Text>
+      <View style={styles.disclaimerBox}>
+        <Ionicons name="information-circle-outline" size={18} color={colors.inkMuted} />
+        <View style={styles.disclaimerCopy}>
+          <Text style={styles.disclaimer}>
+            gearapps tarafından geliştirilen bağımsız bir çalışma aracıdır. ÖSYM’yi
+            veya başka bir kamu kurumunu temsil etmez.
+          </Text>
+          <Pressable
+            accessibilityRole="link"
+            accessibilityLabel="ÖSYM resmî internet sitesini aç"
+            onPress={() => void Linking.openURL('https://www.osym.gov.tr/')}
+            style={({ pressed }) => pressed && styles.officialLinkPressed}
+          >
+            <Text style={styles.officialLink}>Resmî sınav bilgileri: osym.gov.tr</Text>
+          </Pressable>
+        </View>
+      </View>
     </ScrollView>
   );
 }
@@ -180,18 +192,6 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginTop: 2,
   },
-  streakBadge: {
-    minWidth: 44,
-    height: 40,
-    borderRadius: radius.pill,
-    backgroundColor: colors.amberSoft,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 6,
-    paddingHorizontal: spacing.sm,
-  },
-  streakText: { color: colors.ink, fontWeight: '800', fontSize: 14 },
   hero: {
     backgroundColor: colors.ink,
     borderRadius: radius.xl,
@@ -208,12 +208,25 @@ const styles = StyleSheet.create({
     borderWidth: 6,
     borderColor: colors.accent,
     backgroundColor: '#203747',
-    alignItems: 'baseline',
+    alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
   },
-  ringValue: { color: colors.white, fontWeight: '900', fontSize: 23 },
-  ringGoal: { color: '#B7C1C7', fontWeight: '700', fontSize: 12 },
+  ringContent: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+  },
+  ringValue: {
+    color: colors.white,
+    fontWeight: '900',
+    fontSize: 23,
+    lineHeight: 28,
+  },
+  ringGoal: {
+    color: '#B7C1C7',
+    fontWeight: '700',
+    fontSize: 12,
+    lineHeight: 18,
+  },
   heroCopy: { flex: 1 },
   heroEyebrow: {
     color: '#AEBAC1',
@@ -284,11 +297,26 @@ const styles = StyleSheet.create({
   },
   subjectProgressBar: { flex: 1 },
   subjectPercent: { fontSize: 10, fontWeight: '800' },
+  disclaimerBox: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.sm,
+    backgroundColor: colors.muted,
+    borderRadius: radius.md,
+    padding: spacing.md,
+  },
+  disclaimerCopy: { flex: 1 },
   disclaimer: {
-    textAlign: 'center',
     color: colors.inkMuted,
     fontSize: 10,
     lineHeight: 15,
-    paddingHorizontal: spacing.xl,
   },
+  officialLink: {
+    color: colors.accentDark,
+    fontSize: 11,
+    lineHeight: 16,
+    fontWeight: '800',
+    marginTop: spacing.xs,
+  },
+  officialLinkPressed: { opacity: 0.65 },
 });

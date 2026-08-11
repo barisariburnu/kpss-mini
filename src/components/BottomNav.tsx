@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { colors, spacing } from '../theme';
 
@@ -23,35 +24,38 @@ const tabs: {
 
 export function BottomNav({ activeTab, onChange }: Props) {
   return (
-    <View style={styles.container} accessibilityRole="tablist">
-      {tabs.map((tab) => {
-        const active = tab.id === activeTab;
-        return (
-          <Pressable
-            key={tab.id}
-            accessibilityRole="tab"
-            accessibilityState={{ selected: active }}
-            accessibilityLabel={tab.label}
-            onPress={() => onChange(tab.id)}
-            style={({ pressed }) => [styles.item, pressed && styles.pressed]}
-          >
-            <Ionicons
-              name={active ? tab.activeIcon : tab.icon}
-              size={21}
-              color={active ? colors.accentDark : colors.inkMuted}
-            />
-            <Text style={[styles.label, active && styles.activeText]}>
-              {tab.label}
-            </Text>
-            {active ? <View style={styles.activeDot} /> : null}
-          </Pressable>
-        );
-      })}
-    </View>
+    <SafeAreaView style={styles.safeContainer} edges={['bottom']}>
+      <View style={styles.container} accessibilityRole="tablist">
+        {tabs.map((tab) => {
+          const active = tab.id === activeTab;
+          return (
+            <Pressable
+              key={tab.id}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: active }}
+              accessibilityLabel={tab.label}
+              onPress={() => onChange(tab.id)}
+              style={({ pressed }) => [styles.item, pressed && styles.pressed]}
+            >
+              <Ionicons
+                name={active ? tab.activeIcon : tab.icon}
+                size={21}
+                color={active ? colors.accentDark : colors.inkMuted}
+              />
+              <Text style={[styles.label, active && styles.activeText]}>
+                {tab.label}
+              </Text>
+              {active ? <View style={styles.activeDot} /> : null}
+            </Pressable>
+          );
+        })}
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeContainer: { backgroundColor: colors.surface },
   container: {
     minHeight: 72,
     flexDirection: 'row',

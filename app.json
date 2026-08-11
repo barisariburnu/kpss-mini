@@ -20,7 +20,7 @@
     },
     "android": {
       "package": "com.gearapps.kpsshapnot",
-      "versionCode": 5,
+      "versionCode": 6,
       "predictiveBackGestureEnabled": true,
       "allowBackup": false,
       "adaptiveIcon": {

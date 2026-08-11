@@ -1,5 +1,5 @@
 export const DATABASE_NAME = 'kpss-hap-not.db';
-export const DATABASE_VERSION = 1;
+export const DATABASE_VERSION = 2;
 
 export const MIGRATION_V1 = `
 CREATE TABLE IF NOT EXISTS subjects (
@@ -204,4 +204,50 @@ VALUES
    'Paris’tedir.',
    'Ekonomik İşbirliği ve Kalkınma Örgütü, ekonomik ve sosyal politikalar alanında çalışmalar yürütür.',
    NULL, 'gearapps başlangıç içeriği', 1, 0);
+`;
+
+export const MIGRATION_V2 = `
+UPDATE cards
+SET source_name = CASE subject_id
+      WHEN 'turkce' THEN 'Türk Dil Kurumu - Yazım Kılavuzu'
+      WHEN 'matematik' THEN 'T.C. Millî Eğitim Bakanlığı - Öğretim Programları'
+      WHEN 'tarih' THEN 'Atatürk Kültür, Dil ve Tarih Yüksek Kurumu - Atatürk Ansiklopedisi'
+      WHEN 'cografya' THEN 'Türkiye İstatistik Kurumu - Veri Portalı'
+      WHEN 'vatandaslik' THEN 'T.C. Mevzuat Bilgi Sistemi'
+      ELSE source_name
+    END,
+    source_url = CASE subject_id
+      WHEN 'turkce' THEN 'https://tdk.gov.tr/tdk/kurumsal/yazim-kilavuzu/'
+      WHEN 'matematik' THEN 'https://mufredat.meb.gov.tr/'
+      WHEN 'tarih' THEN 'https://ataturkansiklopedisi.gov.tr/'
+      WHEN 'cografya' THEN 'https://veriportali.tuik.gov.tr/tr/'
+      WHEN 'vatandaslik' THEN 'https://www.mevzuat.gov.tr/'
+      ELSE source_url
+    END,
+    content_version = 2
+WHERE subject_id IN ('turkce', 'matematik', 'tarih', 'cografya', 'vatandaslik');
+
+UPDATE cards
+SET source_name = CASE id
+      WHEN 'guncel-1' THEN 'Birleşmiş Milletler - Hakkımızda'
+      WHEN 'guncel-2' THEN 'UNESCO - Kurum Hakkında'
+      WHEN 'guncel-3' THEN 'Dünya Sağlık Örgütü - Kurum Hakkında'
+      WHEN 'guncel-4' THEN 'OECD - Kurum Hakkında'
+      ELSE source_name
+    END,
+    source_url = CASE id
+      WHEN 'guncel-1' THEN 'https://www.un.org/en/about-us'
+      WHEN 'guncel-2' THEN 'https://www.unesco.org/en/brief'
+      WHEN 'guncel-3' THEN 'https://www.who.int/about'
+      WHEN 'guncel-4' THEN 'https://www.oecd.org/en/about.html'
+      ELSE source_url
+    END,
+    content_version = 2
+WHERE subject_id = 'guncel';
+
+INSERT INTO content_meta(key, value, updated_at)
+VALUES ('content_version', '2', CURRENT_TIMESTAMP)
+ON CONFLICT(key) DO UPDATE SET
+  value = excluded.value,
+  updated_at = CURRENT_TIMESTAMP;
 `;

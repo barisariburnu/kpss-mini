@@ -1,5 +1,46 @@
 # Degisiklik Gunlugu
 
+## [1.0.0-policy-compliance] - 2026-08-11
+
+### Degistirildi
+
+- Google Play'in "Yaniltici Iddialar" ret gerekcesi dogrultusunda Android
+  `versionCode` 6'ya yukseltildi.
+- Kullanici ekran goruntusundeki gereksiz ana sayfa sag ust sayaci kaldirildi.
+- Gunluk hedef halkasindaki `2/10` benzeri degerler ortak bir satir kapsayicisiyla
+  hem yatay hem dikey olarak merkeze alindi.
+- Alt navigasyon, Android sistem gezinme inset'ini kendi beyaz zemini icinde
+  kapsayacak sekilde ayrildi; beyaz alan artik ekranin en altina kadar uzanir.
+- Yerel build basariyla AAB urettiği halde Windows'un gecici `classes.dex`
+  kilidi nedeniyle basarisiz cikis vermemesi icin guvenli tekrarli temizlik ve
+  uyari akisi eklendi.
+- SQLite icerik semasi 2. surume tasindi; mevcut 24 kartin her birine resmi veya
+  birincil kaynak adi ve calisir HTTPS kaynak adresi eklendi.
+- Kart cevabi ekranina kaynak adi ve URL'sini gosteren, erisilebilir ve
+  acilabilir "RESMI KAYNAK" alani eklendi.
+- Ana sayfadaki bagimsizlik beyanina gorunur `osym.gov.tr` resmi sinav bilgisi
+  baglantisi eklendi.
+- Google Play tam aciklamasinin en ustune uygulamanin OSYM/kamu kurumu olmadigi
+  beyan edildi; resmi kaynaklar adlari ve acik URL'leriyle listelendi.
+
+### Play Console
+
+- 10 Agustos 2026 tarihli ret, "Resmi Bilgilerle Ilgili Kaynak Baglantisi
+  Eksik" kanitiyla Yaniltici Iddialar Politikasi ihlali olarak tespit edildi.
+- Google'in duzeltme talebi, resmi kaynak URL'leri ve belirgin kamu kurumu
+  bagimsizlik beyaninin hem uygulamada hem magaza aciklamasinda bulunmasi olarak
+  kaydedildi.
+- Dahili test magazasinda paket adi ve varsayilan Android simgesi gorunmesinin,
+  ilk magaza kaydi reddedildigi icin Play'in `unreviewed` gecici gorunumunu
+  kullanmasindan kaynaklandigi ekran goruntuleriyle dogrulandi.
+
+### Agent Devir Notu
+
+- Policy issue ID: `4986534170940223184`.
+- Kod ve magaza metni hazirlandiktan sonra yerel v6 AAB alinmali, Play'e
+  yuklenmeli ve reddedilen production degisiklikleri tekrar incelemeye
+  gonderilmelidir.
+
 ## [1.0.0-internal-test] - 2026-08-09
 
 ### Degistirildi

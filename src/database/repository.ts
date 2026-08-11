@@ -6,6 +6,7 @@ import {
   DATABASE_NAME,
   DATABASE_VERSION,
   MIGRATION_V1,
+  MIGRATION_V2,
 } from './migrations';
 
 type VersionRow = { user_version: number };
@@ -35,6 +36,14 @@ async function migrateDatabase(db: SQLite.SQLiteDatabase) {
     await db.withTransactionAsync(async () => {
       const transaction = db;
       await transaction.execAsync(MIGRATION_V1);
+      await transaction.execAsync('PRAGMA user_version = 1;');
+    });
+  }
+
+  if (currentVersion < 2) {
+    await db.withTransactionAsync(async () => {
+      const transaction = db;
+      await transaction.execAsync(MIGRATION_V2);
       await transaction.execAsync(`PRAGMA user_version = ${DATABASE_VERSION};`);
     });
   }

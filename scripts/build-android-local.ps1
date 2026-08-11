@@ -133,7 +133,18 @@ try {
     if (-not $resolvedBuildRoot.StartsWith($safePrefix, [StringComparison]::OrdinalIgnoreCase)) {
       throw 'Gecici build dizini guvenlik kontrolunu gecemedi; otomatik silinmedi.'
     }
-    Remove-Item -LiteralPath $resolvedBuildRoot -Recurse -Force
+    $cleanupSucceeded = $false
+    for ($attempt = 1; $attempt -le 5 -and -not $cleanupSucceeded; $attempt++) {
+      try {
+        Remove-Item -LiteralPath $resolvedBuildRoot -Recurse -Force -ErrorAction Stop
+        $cleanupSucceeded = $true
+      } catch {
+        if ($attempt -lt 5) { Start-Sleep -Milliseconds 300 }
+      }
+    }
+    if (-not $cleanupSucceeded) {
+      Write-Warning "Gecici build dizini kilitli oldugu icin simdi silinemedi: $resolvedBuildRoot"
+    }
   }
 
   $credentials = $null
